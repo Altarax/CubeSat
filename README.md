@@ -3,7 +3,7 @@ With the aim of becoming an FPGA/VHDL teacher, I am developing a cubesat project
 
 ## Functional diagram
 First of all, here is what I want it to look like. It's a functionnal diagram with the main components.
-![functionnal_diagram](diagram.png)
+![functionnal_diagram](/images/diagram.png)
 
 ## Structure
 
