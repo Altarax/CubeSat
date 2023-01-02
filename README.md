@@ -25,17 +25,17 @@ Of course I'll buy it from JLPCB.
 ![](/images/pcb.png)
 
 ## Todo
-To copy : ✔️ ❌
-[❌] - Altimeter
-[❌] - Ultrasonic sensor
-[❌] - Receiver
-[❌] - Transmitter
-[❌] - UV sensor
-[❌] - Extern T°/Hum sensor
-[❌] - Intern T°/Hum sensor
-[❌] - One Wire
-[❌] - SPI
-[❌] - I2C
-[❌] - TOP LEVEL
-[❌] - Assembly
-[❌] - Testing
+To copy : ✔️ ❌  
+[❌] - Altimeter  
+[❌] - Ultrasonic sensor  
+[❌] - Receiver  
+[❌] - Transmitter  
+[❌] - UV sensor  
+[❌] - Extern T°/Hum sensor  
+[❌] - Intern T°/Hum sensor  
+[❌] - One Wire  
+[❌] - SPI  
+[❌] - I2C  
+[❌] - TOP LEVEL  
+[❌] - Assembly  
+[❌] - Testing  
