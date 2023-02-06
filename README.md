@@ -8,6 +8,7 @@ There will be :
 - 2 temperature/humidity sensors
 - An ultrasonic distance sensor
 - An UV sensor
+- An accelerometer
 - An altimeter
 - And later I'll add an H bridge to control solar panels
 - Also, a Receiver and a Transmitter to communicate with the ground base
