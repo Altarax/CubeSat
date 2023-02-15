@@ -4,18 +4,59 @@ library ieee;
 
 entity altimeter is
     port (
-        clk_50Mhz : in std_logic;
-        reset : in std_logic;
-
+        clk_50Mhz           : in std_logic;
+        reset               : in std_logic;
+        
+        ask_for_pressure    : in std_logic;
+        received_data       : out std_logic_vector(15 downto 0);
+        
         -- I2C interface
-        i2c_scl : in std_logic;
-        i2c_sda : in std_logic;
-        i2c_sck : out std_logic
+        i2c_scl             : in std_logic;
+        i2c_sda             : in std_logic;
+        i2c_sck             : out std_logic
     );
 end entity;
 
 architecture rtl of altimeter is
+
+    constant SLAVE_ADDR_c   : std_logic_vector(7 downto 0) := "";
+    constant REG_ADDR_c     : std_logic_vector(7 downto 0) := "";
+
+    type state_type is (init_t, start_t, send_slave_addr_t, write_t, send_reg_addr_t, stop_t, get_data_t);
+    signal present_state, futur_state            : state_type := init_t;
+    
 begin
+
+    reg_fsm: process (clk_50Mhz, reset)
+    begin
+        if reset = '1' then
+            present_state <= init_t;
+        elsif rising_edge(clk_50Mhz) then
+            present_state <= futur_state;
+        end if;
+    end process;
+
+    fsm: process (present_state)
+    begin
+        case present_state is
+            when init_t =>
+                futur_state <= start_t;
+            when start_t =>
+                futur_state <= send_slave_addr_t;
+            when send_slave_addr_t =>
+                futur_state <= write_t;
+            when write_t =>
+                futur_state <= send_reg_addr_t;
+            when send_reg_addr_t =>
+                futur_state <= stop_t;
+            when stop_t =>
+                futur_state <= get_data_t;
+            when get_data_t =>
+                futur_state <= init_t;
+            when others =>
+                futur_state <= init_t;
+        end case;
+    end process;
 
     -- First config :
     -- 1. Send start bit
