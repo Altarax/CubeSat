@@ -8,17 +8,17 @@ entity altimeter is
         reset               : in std_logic;
         
         ask_for_pressure    : in std_logic;
-        received_data       : out std_logic_vector(19 downto 0);
+        pressure_data       : out std_logic_vector(19 downto 0);
         
         -- I2C interface
         i2c_scl             : inout std_logic;
-        i2c_sda             : inout std_logics
+        i2c_sda             : inout std_logic
     );
 end entity;
 
 architecture rtl of altimeter is
 
-    constant SLAVE_ADDR_c   : std_logic_vector(7 downto 0) := X"";
+    constant SLAVE_ADDR_c   : std_logic_vector(7 downto 0) := X"00"; -- TBD
     constant DATA_CONFIG    : std_logic_vector(7 downto 0) := X"00";
     constant REG_ADDR_c     : std_logic_vector(7 downto 0) := X"FA";
     constant REG_DATA_ADDR_c: std_logic_vector(7 downto 0) := X"F7";
@@ -30,7 +30,7 @@ architecture rtl of altimeter is
     signal config_sent                                                  : std_logic := '0';
 
     signal count_get_data                                               : integer range 0 to 19 := 0;
-    signal received_data : std_logic_vector(19 downto 0) := (others => '0');
+    signal received_data_s : std_logic_vector(19 downto 0) := (others => '0');
 
     signal get_pressure                                                 : std_logic := '0';
     
@@ -61,51 +61,65 @@ begin
     fsm: process (current_state)
     begin
         case current_state is
+            
             when init_t =>
                 if ask_for_pressure = '1' then
                     futur_state <= start_t;
                 end if;
                 get_pressure <= '0';
+                
             when start_t =>
                 futur_state <= send_slave_addr_t;
+                
             when send_slave_addr_t =>
                 if count_slave_addr = 7 and config_sent = '0' then
                     futur_state <= write_t;
                 elsif count_slave_addr = 7 and config_sent = '1' then
                     futur_state <= read_t;
                 end if;
+                
             when write_t =>
                 futur_state <= wack_write_t;
+                
             when wack_write_t =>
                 if config_sent = '0' then
                     futur_state <= send_reg_addr_t;
                 else 
                     futur_state <= send_reg_data_t;
                 end if;
+                
             when read_t =>
                 futur_state <= wack_read_t;
+                
             when wack_read_t =>
                 futur_state <= get_data_t;
+                
             when send_reg_data_t =>
                 if count_reg_data = 7 then
                     futur_state <= stop_t;
                 end if;
+                
             when send_reg_addr_t =>
                 futur_state <= send_data_t;
+                
             when send_data_t =>
                 if count_data = 7 then
                     futur_state <= stop_t;
                 end if;
+                
             when get_data_t =>
                 if count_get_data = 19 then
                     get_pressure <= '1';
                     futur_state <= stop_t;
                 end if;
+                
             when stop_t =>
                 futur_state <= init_t;
+                
             when others =>
                 futur_state <= init_t;
         end case;
+        
     end process;
     
     output_fsm: process (current_state)
@@ -131,7 +145,7 @@ begin
             when stop_t =>
                 i2c_sda <= '1';
             when get_data_t =>
-                received_data(count_get_data) <= i2c_sda;
+                received_data_s(count_get_data) <= i2c_sda;
                 i2c_sda <= '1';
             when others =>
                 i2c_sda <= '1';
@@ -171,7 +185,7 @@ begin
         end if;
     end process;
 
-    pressure_data <= received_data(19 downto 0) when get_pressure = '1' else (others => '0');
+    pressure_data <= received_data_s(19 downto 0) when get_pressure = '1' else (others => '0');
 
     -- 4. Get data :
         -- 0xF7 : MSB of pressure (8 first bits to arrive)
