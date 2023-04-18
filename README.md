@@ -18,7 +18,7 @@ The ground base will be simple with push buttons and LCD Screen.
 ## Structure
 For the structure, I printed each piece. I used these files : https://www.thingiverse.com/thing:4096437.
 I took the liberty to increase the size by 50%. So today it looks like this :  
-<img src="/images/structure.png" width="300" height="300">
+<img src="/images/structure.png" width="500" height="500">
 
 ## Schematics
 So, for this project I need to create my own PCB. With the help of my colleague, we created it using Easy EDA.
