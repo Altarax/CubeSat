@@ -146,7 +146,6 @@ begin
                 i2c_sda <= '1';
             when get_data_t =>
                 received_data_s(count_get_data) <= i2c_sda;
-                i2c_sda <= '1';
             when others =>
                 i2c_sda <= '1';
         end case;
@@ -191,6 +190,5 @@ begin
         -- 0xF7 : MSB of pressure (8 first bits to arrive)
         -- 0xF8 : LSB of pressure (8 next bits to arrive)
         -- 0xF9 : XLSB of pressure (4 last bits to arrive, bit 7,6,5,4 of addr)
-    -- 5. Send stop bit
 
 end architecture;
