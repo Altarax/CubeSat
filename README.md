@@ -25,6 +25,9 @@ So, for this project I need to create my own PCB. With the help of my colleague,
 Of course I'll buy it from JLPCB.  
 ![](/images/pcb.png)
 
+## Quartus project
+If you want to test everything on your own, I'm giving you the Quartus project.
+
 ## Todo
 To copy : ✔️ ❌  
 [❌] - Altimeter  
