@@ -8,6 +8,7 @@ There will be :
 - 2 temperature/humidity sensors
 - An ultrasonic distance sensor
 - An UV sensor
+- An accelerometer
 - An altimeter
 - And later I'll add an H bridge to control solar panels
 - Also, a Receiver and a Transmitter to communicate with the ground base
@@ -23,3 +24,22 @@ I took the liberty to increase the size by 50%. So today it looks like this :
 So, for this project I need to create my own PCB. With the help of my colleague, we created it using Easy EDA.
 Of course I'll buy it from JLPCB.  
 ![](/images/pcb.png)
+
+## Quartus project
+If you want to test everything on your own, I'm giving you the Quartus project.
+
+## Todo
+To copy : ✔️ ❌  
+[❌] - Altimeter  
+[❌] - Ultrasonic sensor  
+[❌] - Receiver  
+[❌] - Transmitter  
+[❌] - UV sensor  
+[❌] - Extern T°/Hum sensor  
+[❌] - Intern T°/Hum sensor  
+[❌] - One Wire  
+[❌] - SPI  
+[❌] - I2C  
+[❌] - TOP LEVEL  
+[❌] - Assembly  
+[❌] - Testing  
