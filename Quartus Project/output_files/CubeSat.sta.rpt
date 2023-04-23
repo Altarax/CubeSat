@@ -1,0 +1,1191 @@
+TimeQuest Timing Analyzer report for CubeSat
+Sun Apr 23 16:16:39 2023
+Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow Model Fmax Summary
+  6. Slow Model Setup Summary
+  7. Slow Model Hold Summary
+  8. Slow Model Recovery Summary
+  9. Slow Model Removal Summary
+ 10. Slow Model Minimum Pulse Width Summary
+ 11. Slow Model Setup: 'clk_50Mhz'
+ 12. Slow Model Hold: 'clk_50Mhz'
+ 13. Slow Model Minimum Pulse Width: 'clk_50Mhz'
+ 14. Setup Times
+ 15. Hold Times
+ 16. Clock to Output Times
+ 17. Minimum Clock to Output Times
+ 18. Fast Model Setup Summary
+ 19. Fast Model Hold Summary
+ 20. Fast Model Recovery Summary
+ 21. Fast Model Removal Summary
+ 22. Fast Model Minimum Pulse Width Summary
+ 23. Fast Model Setup: 'clk_50Mhz'
+ 24. Fast Model Hold: 'clk_50Mhz'
+ 25. Fast Model Minimum Pulse Width: 'clk_50Mhz'
+ 26. Setup Times
+ 27. Hold Times
+ 28. Clock to Output Times
+ 29. Minimum Clock to Output Times
+ 30. Multicorner Timing Analysis Summary
+ 31. Setup Times
+ 32. Hold Times
+ 33. Clock to Output Times
+ 34. Minimum Clock to Output Times
+ 35. Setup Transfers
+ 36. Hold Transfers
+ 37. Report TCCS
+ 38. Report RSKM
+ 39. Unconstrained Paths
+ 40. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                                      ;
++--------------------+-------------------------------------------------------------------+
+; Quartus II Version ; Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition ;
+; Revision Name      ; CubeSat                                                           ;
+; Device Family      ; Cyclone II                                                        ;
+; Device Name        ; EP2C5T144C6                                                       ;
+; Timing Models      ; Final                                                             ;
+; Delay Model        ; Combined                                                          ;
+; Rise/Fall Delays   ; Unavailable                                                       ;
++--------------------+-------------------------------------------------------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 12     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets       ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------------+
+; clk_50Mhz  ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk_50Mhz } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------------+
+
+
++--------------------------------------------------+
+; Slow Model Fmax Summary                          ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 129.12 MHz ; 129.12 MHz      ; clk_50Mhz  ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++------------------------------------+
+; Slow Model Setup Summary           ;
++-----------+--------+---------------+
+; Clock     ; Slack  ; End Point TNS ;
++-----------+--------+---------------+
+; clk_50Mhz ; -6.745 ; -371.766      ;
++-----------+--------+---------------+
+
+
++-----------------------------------+
+; Slow Model Hold Summary           ;
++-----------+-------+---------------+
+; Clock     ; Slack ; End Point TNS ;
++-----------+-------+---------------+
+; clk_50Mhz ; 0.391 ; 0.000         ;
++-----------+-------+---------------+
+
+
+-------------------------------
+; Slow Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Slow Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Slow Model Minimum Pulse Width Summary ;
++-----------+--------+-------------------+
+; Clock     ; Slack  ; End Point TNS     ;
++-----------+--------+-------------------+
+; clk_50Mhz ; -1.380 ; -111.380          ;
++-----------+--------+-------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'clk_50Mhz'                                                                                                               ;
++--------+---------------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                       ; To Node                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; -6.745 ; i2c_master:i2c_master_inst|busy ; i2c_data_wr[3]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.009     ; 7.772      ;
+; -6.745 ; i2c_master:i2c_master_inst|busy ; i2c_data_wr[6]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.009     ; 7.772      ;
+; -6.745 ; i2c_master:i2c_master_inst|busy ; i2c_data_wr[4]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.009     ; 7.772      ;
+; -6.745 ; i2c_master:i2c_master_inst|busy ; i2c_data_wr[5]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.009     ; 7.772      ;
+; -6.672 ; i2c_master:i2c_master_inst|busy ; i2c_ena                    ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.011      ; 7.719      ;
+; -6.607 ; busy_prev                       ; i2c_data_wr[3]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.009     ; 7.634      ;
+; -6.607 ; busy_prev                       ; i2c_data_wr[6]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.009     ; 7.634      ;
+; -6.607 ; busy_prev                       ; i2c_data_wr[4]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.009     ; 7.634      ;
+; -6.607 ; busy_prev                       ; i2c_data_wr[5]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.009     ; 7.634      ;
+; -6.534 ; busy_prev                       ; i2c_ena                    ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.011      ; 7.581      ;
+; -6.451 ; \fsm:busy_count[2]              ; i2c_data_wr[3]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.014     ; 7.473      ;
+; -6.451 ; \fsm:busy_count[2]              ; i2c_data_wr[6]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.014     ; 7.473      ;
+; -6.451 ; \fsm:busy_count[2]              ; i2c_data_wr[4]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.014     ; 7.473      ;
+; -6.451 ; \fsm:busy_count[2]              ; i2c_data_wr[5]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.014     ; 7.473      ;
+; -6.439 ; i2c_master:i2c_master_inst|busy ; accel_data_s[0]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.459      ;
+; -6.439 ; i2c_master:i2c_master_inst|busy ; accel_data_s[2]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.459      ;
+; -6.439 ; i2c_master:i2c_master_inst|busy ; accel_data_s[4]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.459      ;
+; -6.439 ; i2c_master:i2c_master_inst|busy ; accel_data_s[5]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.459      ;
+; -6.439 ; i2c_master:i2c_master_inst|busy ; accel_data_s[6]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.459      ;
+; -6.401 ; i2c_master:i2c_master_inst|busy ; accel_data_s[1]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.427      ;
+; -6.401 ; i2c_master:i2c_master_inst|busy ; accel_data_s[3]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.427      ;
+; -6.401 ; i2c_master:i2c_master_inst|busy ; accel_data_s[7]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.427      ;
+; -6.378 ; \fsm:busy_count[2]              ; i2c_ena                    ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.006      ; 7.420      ;
+; -6.371 ; \fsm:busy_count[0]              ; i2c_data_wr[3]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.397      ;
+; -6.371 ; \fsm:busy_count[0]              ; i2c_data_wr[6]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.397      ;
+; -6.371 ; \fsm:busy_count[0]              ; i2c_data_wr[4]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.397      ;
+; -6.371 ; \fsm:busy_count[0]              ; i2c_data_wr[5]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.397      ;
+; -6.368 ; i2c_master:i2c_master_inst|busy ; accel_data_s[8]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.388      ;
+; -6.368 ; i2c_master:i2c_master_inst|busy ; accel_data_s[9]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.388      ;
+; -6.368 ; i2c_master:i2c_master_inst|busy ; accel_data_s[10]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.388      ;
+; -6.368 ; i2c_master:i2c_master_inst|busy ; accel_data_s[11]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.388      ;
+; -6.368 ; i2c_master:i2c_master_inst|busy ; accel_data_s[12]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.388      ;
+; -6.368 ; i2c_master:i2c_master_inst|busy ; accel_data_s[13]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.388      ;
+; -6.368 ; i2c_master:i2c_master_inst|busy ; accel_data_s[14]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.388      ;
+; -6.368 ; i2c_master:i2c_master_inst|busy ; accel_data_s[15]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.388      ;
+; -6.310 ; i2c_master:i2c_master_inst|busy ; current_state.init         ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.010      ; 7.356      ;
+; -6.310 ; i2c_master:i2c_master_inst|busy ; get_data_done              ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.010      ; 7.356      ;
+; -6.308 ; i2c_master:i2c_master_inst|busy ; current_state.get_result_t ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.010      ; 7.354      ;
+; -6.301 ; busy_prev                       ; accel_data_s[0]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.321      ;
+; -6.301 ; busy_prev                       ; accel_data_s[2]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.321      ;
+; -6.301 ; busy_prev                       ; accel_data_s[4]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.321      ;
+; -6.301 ; busy_prev                       ; accel_data_s[5]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.321      ;
+; -6.301 ; busy_prev                       ; accel_data_s[6]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.321      ;
+; -6.298 ; \fsm:busy_count[0]              ; i2c_ena                    ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.010      ; 7.344      ;
+; -6.263 ; busy_prev                       ; accel_data_s[1]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.289      ;
+; -6.263 ; busy_prev                       ; accel_data_s[3]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.289      ;
+; -6.263 ; busy_prev                       ; accel_data_s[7]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.289      ;
+; -6.253 ; i2c_master:i2c_master_inst|busy ; i2c_rw                     ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.010      ; 7.299      ;
+; -6.230 ; busy_prev                       ; accel_data_s[8]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.250      ;
+; -6.230 ; busy_prev                       ; accel_data_s[9]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.250      ;
+; -6.230 ; busy_prev                       ; accel_data_s[10]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.250      ;
+; -6.230 ; busy_prev                       ; accel_data_s[11]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.250      ;
+; -6.230 ; busy_prev                       ; accel_data_s[12]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.250      ;
+; -6.230 ; busy_prev                       ; accel_data_s[13]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.250      ;
+; -6.230 ; busy_prev                       ; accel_data_s[14]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.250      ;
+; -6.230 ; busy_prev                       ; accel_data_s[15]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.016     ; 7.250      ;
+; -6.172 ; busy_prev                       ; current_state.init         ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.010      ; 7.218      ;
+; -6.172 ; busy_prev                       ; get_data_done              ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.010      ; 7.218      ;
+; -6.170 ; busy_prev                       ; current_state.get_result_t ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.010      ; 7.216      ;
+; -6.145 ; \fsm:busy_count[2]              ; accel_data_s[0]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.160      ;
+; -6.145 ; \fsm:busy_count[2]              ; accel_data_s[2]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.160      ;
+; -6.145 ; \fsm:busy_count[2]              ; accel_data_s[4]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.160      ;
+; -6.145 ; \fsm:busy_count[2]              ; accel_data_s[5]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.160      ;
+; -6.145 ; \fsm:busy_count[2]              ; accel_data_s[6]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.160      ;
+; -6.115 ; busy_prev                       ; i2c_rw                     ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.010      ; 7.161      ;
+; -6.113 ; i2c_master:i2c_master_inst|busy ; i2c_data_wr[0]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.009     ; 7.140      ;
+; -6.107 ; \fsm:busy_count[2]              ; accel_data_s[1]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.015     ; 7.128      ;
+; -6.107 ; \fsm:busy_count[2]              ; accel_data_s[3]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.015     ; 7.128      ;
+; -6.107 ; \fsm:busy_count[2]              ; accel_data_s[7]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.015     ; 7.128      ;
+; -6.091 ; \fsm:busy_count[1]              ; i2c_data_wr[3]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.117      ;
+; -6.091 ; \fsm:busy_count[1]              ; i2c_data_wr[6]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.117      ;
+; -6.091 ; \fsm:busy_count[1]              ; i2c_data_wr[4]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.117      ;
+; -6.091 ; \fsm:busy_count[1]              ; i2c_data_wr[5]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 7.117      ;
+; -6.079 ; i2c_master:i2c_master_inst|busy ; i2c_data_wr[2]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.009     ; 7.106      ;
+; -6.074 ; \fsm:busy_count[2]              ; accel_data_s[8]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.089      ;
+; -6.074 ; \fsm:busy_count[2]              ; accel_data_s[9]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.089      ;
+; -6.074 ; \fsm:busy_count[2]              ; accel_data_s[10]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.089      ;
+; -6.074 ; \fsm:busy_count[2]              ; accel_data_s[11]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.089      ;
+; -6.074 ; \fsm:busy_count[2]              ; accel_data_s[12]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.089      ;
+; -6.074 ; \fsm:busy_count[2]              ; accel_data_s[13]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.089      ;
+; -6.074 ; \fsm:busy_count[2]              ; accel_data_s[14]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.089      ;
+; -6.074 ; \fsm:busy_count[2]              ; accel_data_s[15]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.021     ; 7.089      ;
+; -6.065 ; \fsm:busy_count[0]              ; accel_data_s[0]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.017     ; 7.084      ;
+; -6.065 ; \fsm:busy_count[0]              ; accel_data_s[2]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.017     ; 7.084      ;
+; -6.065 ; \fsm:busy_count[0]              ; accel_data_s[4]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.017     ; 7.084      ;
+; -6.065 ; \fsm:busy_count[0]              ; accel_data_s[5]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.017     ; 7.084      ;
+; -6.065 ; \fsm:busy_count[0]              ; accel_data_s[6]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.017     ; 7.084      ;
+; -6.030 ; i2c_master:i2c_master_inst|busy ; \fsm:busy_count[2]         ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.005      ; 7.071      ;
+; -6.027 ; \fsm:busy_count[0]              ; accel_data_s[1]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 7.052      ;
+; -6.027 ; \fsm:busy_count[0]              ; accel_data_s[3]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 7.052      ;
+; -6.027 ; \fsm:busy_count[0]              ; accel_data_s[7]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 7.052      ;
+; -6.018 ; \fsm:busy_count[1]              ; i2c_ena                    ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.010      ; 7.064      ;
+; -6.016 ; \fsm:busy_count[2]              ; current_state.init         ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.005      ; 7.057      ;
+; -6.016 ; \fsm:busy_count[2]              ; get_data_done              ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.005      ; 7.057      ;
+; -6.014 ; \fsm:busy_count[2]              ; current_state.get_result_t ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.005      ; 7.055      ;
+; -5.994 ; \fsm:busy_count[0]              ; accel_data_s[8]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.017     ; 7.013      ;
+; -5.994 ; \fsm:busy_count[0]              ; accel_data_s[9]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.017     ; 7.013      ;
+; -5.994 ; \fsm:busy_count[0]              ; accel_data_s[10]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.017     ; 7.013      ;
+; -5.994 ; \fsm:busy_count[0]              ; accel_data_s[11]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.017     ; 7.013      ;
+; -5.994 ; \fsm:busy_count[0]              ; accel_data_s[12]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.017     ; 7.013      ;
++--------+---------------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'clk_50Mhz'                                                                                                                                        ;
++-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                 ; To Node                                   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.391 ; current_state.send_config_t               ; current_state.send_config_t               ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; current_state.get_result_t                ; current_state.get_result_t                ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; current_state.init                        ; current_state.init                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_ena                                   ; i2c_ena                                   ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_rw                                    ; i2c_rw                                    ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|bit_cnt[0]     ; i2c_master:i2c_master_inst|bit_cnt[0]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|state.command  ; i2c_master:i2c_master_inst|state.command  ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|state.ready    ; i2c_master:i2c_master_inst|state.ready    ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|scl_ena        ; i2c_master:i2c_master_inst|scl_ena        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|stretch        ; i2c_master:i2c_master_inst|stretch        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_data_wr[2]                            ; i2c_data_wr[2]                            ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_data_wr[3]                            ; i2c_data_wr[3]                            ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_data_wr[6]                            ; i2c_data_wr[6]                            ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_data_wr[4]                            ; i2c_data_wr[4]                            ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_data_wr[5]                            ; i2c_data_wr[5]                            ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_data_wr[0]                            ; i2c_data_wr[0]                            ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|data_rx[0]     ; i2c_master:i2c_master_inst|data_rx[0]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; get_data_done                             ; get_data_done                             ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|data_rx[1]     ; i2c_master:i2c_master_inst|data_rx[1]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|data_rx[2]     ; i2c_master:i2c_master_inst|data_rx[2]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|data_rx[3]     ; i2c_master:i2c_master_inst|data_rx[3]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|data_rx[4]     ; i2c_master:i2c_master_inst|data_rx[4]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|data_rx[5]     ; i2c_master:i2c_master_inst|data_rx[5]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|data_rx[6]     ; i2c_master:i2c_master_inst|data_rx[6]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; i2c_master:i2c_master_inst|data_rx[7]     ; i2c_master:i2c_master_inst|data_rx[7]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.657      ;
+; 0.524 ; \fsm:busy_count[31]                       ; \fsm:busy_count[31]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.790      ;
+; 0.558 ; i2c_master:i2c_master_inst|state.wr       ; i2c_master:i2c_master_inst|state.slv_ack2 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.824      ;
+; 0.656 ; i2c_master:i2c_master_inst|state.slv_ack2 ; i2c_master:i2c_master_inst|state.wr       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.922      ;
+; 0.656 ; i2c_master:i2c_master_inst|data_rx[7]     ; i2c_master:i2c_master_inst|data_rd[7]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.922      ;
+; 0.676 ; i2c_master:i2c_master_inst|data_clk       ; i2c_master:i2c_master_inst|data_clk_prev  ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.942      ;
+; 0.694 ; i2c_master:i2c_master_inst|bit_cnt[2]     ; i2c_master:i2c_master_inst|state.slv_ack1 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.960      ;
+; 0.696 ; i2c_master:i2c_master_inst|bit_cnt[2]     ; i2c_master:i2c_master_inst|state.slv_ack2 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.962      ;
+; 0.702 ; i2c_master:i2c_master_inst|data_rx[0]     ; i2c_master:i2c_master_inst|data_rd[0]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.015     ; 0.953      ;
+; 0.732 ; i2c_master:i2c_master_inst|state.command  ; i2c_master:i2c_master_inst|state.slv_ack1 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.998      ;
+; 0.742 ; i2c_master:i2c_master_inst|data_rx[3]     ; i2c_master:i2c_master_inst|data_rd[3]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.015     ; 0.993      ;
+; 0.743 ; i2c_master:i2c_master_inst|data_rx[2]     ; i2c_master:i2c_master_inst|data_rd[2]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.015     ; 0.994      ;
+; 0.743 ; i2c_master:i2c_master_inst|data_rx[4]     ; i2c_master:i2c_master_inst|data_rd[4]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.015     ; 0.994      ;
+; 0.747 ; i2c_master:i2c_master_inst|data_rx[1]     ; i2c_master:i2c_master_inst|data_rd[1]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.015     ; 0.998      ;
+; 0.748 ; i2c_master:i2c_master_inst|data_rx[6]     ; i2c_master:i2c_master_inst|data_rd[6]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.015     ; 0.999      ;
+; 0.772 ; i2c_master:i2c_master_inst|state.stop     ; i2c_master:i2c_master_inst|state.ready    ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.038      ;
+; 0.788 ; \fsm:busy_count[16]                       ; \fsm:busy_count[16]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.054      ;
+; 0.795 ; \fsm:busy_count[4]                        ; \fsm:busy_count[4]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.061      ;
+; 0.795 ; \fsm:busy_count[7]                        ; \fsm:busy_count[7]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.061      ;
+; 0.798 ; \fsm:busy_count[1]                        ; \fsm:busy_count[1]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.064      ;
+; 0.798 ; \fsm:busy_count[17]                       ; \fsm:busy_count[17]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.064      ;
+; 0.799 ; \fsm:busy_count[9]                        ; \fsm:busy_count[9]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.065      ;
+; 0.799 ; \fsm:busy_count[11]                       ; \fsm:busy_count[11]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.065      ;
+; 0.799 ; \fsm:busy_count[13]                       ; \fsm:busy_count[13]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.065      ;
+; 0.799 ; \fsm:busy_count[14]                       ; \fsm:busy_count[14]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.065      ;
+; 0.799 ; \fsm:busy_count[15]                       ; \fsm:busy_count[15]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.065      ;
+; 0.799 ; \fsm:busy_count[18]                       ; \fsm:busy_count[18]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.065      ;
+; 0.799 ; \fsm:busy_count[20]                       ; \fsm:busy_count[20]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.065      ;
+; 0.799 ; \fsm:busy_count[23]                       ; \fsm:busy_count[23]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.065      ;
+; 0.799 ; \fsm:busy_count[25]                       ; \fsm:busy_count[25]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.065      ;
+; 0.799 ; \fsm:busy_count[27]                       ; \fsm:busy_count[27]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.065      ;
+; 0.799 ; \fsm:busy_count[29]                       ; \fsm:busy_count[29]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.065      ;
+; 0.799 ; \fsm:busy_count[30]                       ; \fsm:busy_count[30]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.065      ;
+; 0.803 ; current_state.send_config_t               ; get_data_done                             ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.069      ;
+; 0.804 ; current_state.send_config_t               ; current_state.get_result_t                ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.070      ;
+; 0.824 ; i2c_master:i2c_master_inst|state.ready    ; i2c_master:i2c_master_inst|state.start    ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.090      ;
+; 0.831 ; \fsm:busy_count[3]                        ; \fsm:busy_count[3]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.097      ;
+; 0.831 ; \fsm:busy_count[8]                        ; \fsm:busy_count[8]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.097      ;
+; 0.831 ; \fsm:busy_count[10]                       ; \fsm:busy_count[10]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.097      ;
+; 0.831 ; \fsm:busy_count[12]                       ; \fsm:busy_count[12]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.097      ;
+; 0.831 ; \fsm:busy_count[19]                       ; \fsm:busy_count[19]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.097      ;
+; 0.831 ; \fsm:busy_count[24]                       ; \fsm:busy_count[24]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.097      ;
+; 0.831 ; \fsm:busy_count[26]                       ; \fsm:busy_count[26]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.097      ;
+; 0.831 ; \fsm:busy_count[28]                       ; \fsm:busy_count[28]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.097      ;
+; 0.832 ; \fsm:busy_count[5]                        ; \fsm:busy_count[5]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.098      ;
+; 0.832 ; \fsm:busy_count[6]                        ; \fsm:busy_count[6]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.098      ;
+; 0.832 ; \fsm:busy_count[21]                       ; \fsm:busy_count[21]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.098      ;
+; 0.832 ; \fsm:busy_count[22]                       ; \fsm:busy_count[22]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.098      ;
+; 0.841 ; i2c_master:i2c_master_inst|bit_cnt[1]     ; i2c_master:i2c_master_inst|state.slv_ack2 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.107      ;
+; 0.852 ; i2c_master:i2c_master_inst|bit_cnt[0]     ; i2c_master:i2c_master_inst|state.slv_ack1 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.118      ;
+; 0.868 ; i2c_rw                                    ; i2c_master:i2c_master_inst|addr_rw[0]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.001      ; 1.135      ;
+; 0.895 ; i2c_master:i2c_master_inst|data_rx[5]     ; i2c_master:i2c_master_inst|data_rd[5]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.015     ; 1.146      ;
+; 0.940 ; i2c_master:i2c_master_inst|state.start    ; i2c_master:i2c_master_inst|busy           ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.206      ;
+; 0.945 ; current_state.init                        ; current_state.send_config_t               ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.211      ;
+; 0.971 ; i2c_master:i2c_master_inst|bit_cnt[1]     ; i2c_master:i2c_master_inst|state.slv_ack1 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.237      ;
+; 1.003 ; \fsm:busy_count[0]                        ; \fsm:busy_count[0]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.269      ;
+; 1.006 ; i2c_master:i2c_master_inst|bit_cnt[0]     ; i2c_master:i2c_master_inst|state.slv_ack2 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.272      ;
+; 1.073 ; i2c_master:i2c_master_inst|state.ready    ; i2c_master:i2c_master_inst|busy           ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.339      ;
+; 1.113 ; i2c_master:i2c_master_inst|count[0]       ; i2c_master:i2c_master_inst|count[1]       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.379      ;
+; 1.115 ; i2c_master:i2c_master_inst|count[0]       ; i2c_master:i2c_master_inst|count[0]       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.381      ;
+; 1.116 ; i2c_master:i2c_master_inst|count[0]       ; i2c_master:i2c_master_inst|count[4]       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.382      ;
+; 1.116 ; i2c_master:i2c_master_inst|count[0]       ; i2c_master:i2c_master_inst|count[2]       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.382      ;
+; 1.117 ; i2c_master:i2c_master_inst|count[0]       ; i2c_master:i2c_master_inst|count[3]       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.383      ;
+; 1.121 ; current_state.init                        ; i2c_rw                                    ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.387      ;
+; 1.168 ; i2c_master:i2c_master_inst|state.rd       ; i2c_master:i2c_master_inst|busy           ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.434      ;
+; 1.171 ; \fsm:busy_count[16]                       ; \fsm:busy_count[17]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.437      ;
+; 1.177 ; i2c_master:i2c_master_inst|bit_cnt[2]     ; i2c_master:i2c_master_inst|data_rx[0]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.443      ;
+; 1.178 ; i2c_master:i2c_master_inst|bit_cnt[2]     ; i2c_master:i2c_master_inst|data_rx[6]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.444      ;
+; 1.178 ; \fsm:busy_count[4]                        ; \fsm:busy_count[5]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.444      ;
+; 1.179 ; i2c_master:i2c_master_inst|bit_cnt[2]     ; i2c_master:i2c_master_inst|data_rx[2]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.445      ;
+; 1.179 ; i2c_master:i2c_master_inst|bit_cnt[2]     ; i2c_master:i2c_master_inst|data_rx[4]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.445      ;
+; 1.180 ; i2c_master:i2c_master_inst|data_rd[0]     ; accel_data_s[0]                           ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.001      ; 1.447      ;
+; 1.181 ; i2c_master:i2c_master_inst|data_rd[0]     ; accel_data_s[8]                           ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.001      ; 1.448      ;
+; 1.181 ; i2c_master:i2c_master_inst|bit_cnt[2]     ; i2c_master:i2c_master_inst|data_rx[3]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.447      ;
+; 1.181 ; \fsm:busy_count[17]                       ; \fsm:busy_count[18]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.447      ;
+; 1.182 ; i2c_master:i2c_master_inst|bit_cnt[2]     ; i2c_master:i2c_master_inst|data_rx[1]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 1.448      ;
++-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'clk_50Mhz'                                                                     ;
++--------+--------------+----------------+------------------+-----------+------------+----------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock     ; Clock Edge ; Target                     ;
++--------+--------------+----------------+------------------+-----------+------------+----------------------------+
+; -1.380 ; 1.000        ; 2.380          ; Port Rate        ; clk_50Mhz ; Rise       ; clk_50Mhz                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[0]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[0]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[10]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[10]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[11]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[11]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[12]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[12]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[13]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[13]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[14]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[14]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[15]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[15]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[16]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[16]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[17]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[17]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[18]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[18]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[19]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[19]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[1]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[1]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[20]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[20]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[21]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[21]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[22]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[22]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[23]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[23]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[24]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[24]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[25]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[25]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[26]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[26]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[27]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[27]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[28]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[28]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[29]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[29]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[2]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[2]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[30]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[30]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[31]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[31]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[3]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[3]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[4]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[4]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[5]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[5]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[6]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[6]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[7]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[7]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[8]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[8]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[9]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[9]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[0]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[0]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[10]           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[10]           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[11]           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[11]           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[12]           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[12]           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[13]           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[13]           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[14]           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[14]           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[15]           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[15]           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[1]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[1]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[2]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[2]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[3]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[3]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[4]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[4]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[5]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[5]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[6]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[6]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[7]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[7]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[8]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[8]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[9]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[9]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; busy_prev                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; busy_prev                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; current_state.get_result_t ;
++--------+--------------+----------------+------------------+-----------+------------+----------------------------+
+
+
++------------------------------------------------------------------------------+
+; Setup Times                                                                  ;
++------------------+------------+-------+-------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------+------------+-------+-------+------------+-----------------+
+; ask_for_position ; clk_50Mhz  ; 0.264 ; 0.264 ; Rise       ; clk_50Mhz       ;
+; i2c_scl          ; clk_50Mhz  ; 4.106 ; 4.106 ; Rise       ; clk_50Mhz       ;
+; i2c_sda          ; clk_50Mhz  ; 4.255 ; 4.255 ; Rise       ; clk_50Mhz       ;
+; reset            ; clk_50Mhz  ; 2.585 ; 2.585 ; Rise       ; clk_50Mhz       ;
++------------------+------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Hold Times                                                                     ;
++------------------+------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+------------+--------+--------+------------+-----------------+
+; ask_for_position ; clk_50Mhz  ; 0.134  ; 0.134  ; Rise       ; clk_50Mhz       ;
+; i2c_scl          ; clk_50Mhz  ; -3.876 ; -3.876 ; Rise       ; clk_50Mhz       ;
+; i2c_sda          ; clk_50Mhz  ; -4.020 ; -4.020 ; Rise       ; clk_50Mhz       ;
+; reset            ; clk_50Mhz  ; -0.034 ; -0.034 ; Rise       ; clk_50Mhz       ;
++------------------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------------+
+; Clock to Output Times                                                       ;
++-----------------+------------+-------+-------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------------+------------+-------+-------+------------+-----------------+
+; accel_data[*]   ; clk_50Mhz  ; 8.668 ; 8.668 ; Rise       ; clk_50Mhz       ;
+;  accel_data[0]  ; clk_50Mhz  ; 7.676 ; 7.676 ; Rise       ; clk_50Mhz       ;
+;  accel_data[1]  ; clk_50Mhz  ; 8.668 ; 8.668 ; Rise       ; clk_50Mhz       ;
+;  accel_data[2]  ; clk_50Mhz  ; 8.218 ; 8.218 ; Rise       ; clk_50Mhz       ;
+;  accel_data[3]  ; clk_50Mhz  ; 8.424 ; 8.424 ; Rise       ; clk_50Mhz       ;
+;  accel_data[4]  ; clk_50Mhz  ; 8.308 ; 8.308 ; Rise       ; clk_50Mhz       ;
+;  accel_data[5]  ; clk_50Mhz  ; 8.175 ; 8.175 ; Rise       ; clk_50Mhz       ;
+;  accel_data[6]  ; clk_50Mhz  ; 8.428 ; 8.428 ; Rise       ; clk_50Mhz       ;
+;  accel_data[7]  ; clk_50Mhz  ; 8.411 ; 8.411 ; Rise       ; clk_50Mhz       ;
+;  accel_data[8]  ; clk_50Mhz  ; 8.042 ; 8.042 ; Rise       ; clk_50Mhz       ;
+;  accel_data[9]  ; clk_50Mhz  ; 8.204 ; 8.204 ; Rise       ; clk_50Mhz       ;
+;  accel_data[10] ; clk_50Mhz  ; 7.703 ; 7.703 ; Rise       ; clk_50Mhz       ;
+;  accel_data[11] ; clk_50Mhz  ; 8.141 ; 8.141 ; Rise       ; clk_50Mhz       ;
+;  accel_data[12] ; clk_50Mhz  ; 7.947 ; 7.947 ; Rise       ; clk_50Mhz       ;
+;  accel_data[13] ; clk_50Mhz  ; 8.112 ; 8.112 ; Rise       ; clk_50Mhz       ;
+;  accel_data[14] ; clk_50Mhz  ; 7.695 ; 7.695 ; Rise       ; clk_50Mhz       ;
+;  accel_data[15] ; clk_50Mhz  ; 8.127 ; 8.127 ; Rise       ; clk_50Mhz       ;
+; i2c_scl         ; clk_50Mhz  ; 6.722 ; 6.722 ; Rise       ; clk_50Mhz       ;
+; i2c_sda         ; clk_50Mhz  ; 8.114 ; 8.114 ; Rise       ; clk_50Mhz       ;
++-----------------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                               ;
++-----------------+------------+-------+-------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------------+------------+-------+-------+------------+-----------------+
+; accel_data[*]   ; clk_50Mhz  ; 6.659 ; 6.659 ; Rise       ; clk_50Mhz       ;
+;  accel_data[0]  ; clk_50Mhz  ; 6.659 ; 6.659 ; Rise       ; clk_50Mhz       ;
+;  accel_data[1]  ; clk_50Mhz  ; 7.421 ; 7.421 ; Rise       ; clk_50Mhz       ;
+;  accel_data[2]  ; clk_50Mhz  ; 7.199 ; 7.199 ; Rise       ; clk_50Mhz       ;
+;  accel_data[3]  ; clk_50Mhz  ; 6.922 ; 6.922 ; Rise       ; clk_50Mhz       ;
+;  accel_data[4]  ; clk_50Mhz  ; 7.567 ; 7.567 ; Rise       ; clk_50Mhz       ;
+;  accel_data[5]  ; clk_50Mhz  ; 7.157 ; 7.157 ; Rise       ; clk_50Mhz       ;
+;  accel_data[6]  ; clk_50Mhz  ; 7.310 ; 7.310 ; Rise       ; clk_50Mhz       ;
+;  accel_data[7]  ; clk_50Mhz  ; 6.911 ; 6.911 ; Rise       ; clk_50Mhz       ;
+;  accel_data[8]  ; clk_50Mhz  ; 7.027 ; 7.027 ; Rise       ; clk_50Mhz       ;
+;  accel_data[9]  ; clk_50Mhz  ; 7.185 ; 7.185 ; Rise       ; clk_50Mhz       ;
+;  accel_data[10] ; clk_50Mhz  ; 6.699 ; 6.699 ; Rise       ; clk_50Mhz       ;
+;  accel_data[11] ; clk_50Mhz  ; 7.121 ; 7.121 ; Rise       ; clk_50Mhz       ;
+;  accel_data[12] ; clk_50Mhz  ; 6.814 ; 6.814 ; Rise       ; clk_50Mhz       ;
+;  accel_data[13] ; clk_50Mhz  ; 7.106 ; 7.106 ; Rise       ; clk_50Mhz       ;
+;  accel_data[14] ; clk_50Mhz  ; 6.687 ; 6.687 ; Rise       ; clk_50Mhz       ;
+;  accel_data[15] ; clk_50Mhz  ; 7.126 ; 7.126 ; Rise       ; clk_50Mhz       ;
+; i2c_scl         ; clk_50Mhz  ; 6.587 ; 6.587 ; Rise       ; clk_50Mhz       ;
+; i2c_sda         ; clk_50Mhz  ; 7.123 ; 7.123 ; Rise       ; clk_50Mhz       ;
++-----------------+------------+-------+-------+------------+-----------------+
+
+
++------------------------------------+
+; Fast Model Setup Summary           ;
++-----------+--------+---------------+
+; Clock     ; Slack  ; End Point TNS ;
++-----------+--------+---------------+
+; clk_50Mhz ; -2.640 ; -117.532      ;
++-----------+--------+---------------+
+
+
++-----------------------------------+
+; Fast Model Hold Summary           ;
++-----------+-------+---------------+
+; Clock     ; Slack ; End Point TNS ;
++-----------+-------+---------------+
+; clk_50Mhz ; 0.215 ; 0.000         ;
++-----------+-------+---------------+
+
+
+-------------------------------
+; Fast Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Fast Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Fast Model Minimum Pulse Width Summary ;
++-----------+--------+-------------------+
+; Clock     ; Slack  ; End Point TNS     ;
++-----------+--------+-------------------+
+; clk_50Mhz ; -1.380 ; -111.380          ;
++-----------+--------+-------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'clk_50Mhz'                                                                                                               ;
++--------+---------------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                       ; To Node                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; -2.640 ; i2c_master:i2c_master_inst|busy ; i2c_data_wr[3]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 3.662      ;
+; -2.640 ; i2c_master:i2c_master_inst|busy ; i2c_data_wr[6]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 3.662      ;
+; -2.640 ; i2c_master:i2c_master_inst|busy ; i2c_data_wr[4]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 3.662      ;
+; -2.640 ; i2c_master:i2c_master_inst|busy ; i2c_data_wr[5]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 3.662      ;
+; -2.612 ; busy_prev                       ; i2c_data_wr[3]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 3.634      ;
+; -2.612 ; busy_prev                       ; i2c_data_wr[6]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 3.634      ;
+; -2.612 ; busy_prev                       ; i2c_data_wr[4]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 3.634      ;
+; -2.612 ; busy_prev                       ; i2c_data_wr[5]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.010     ; 3.634      ;
+; -2.582 ; i2c_master:i2c_master_inst|busy ; i2c_ena                    ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.007      ; 3.621      ;
+; -2.554 ; busy_prev                       ; i2c_ena                    ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.007      ; 3.593      ;
+; -2.534 ; i2c_master:i2c_master_inst|busy ; accel_data_s[0]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.548      ;
+; -2.534 ; i2c_master:i2c_master_inst|busy ; accel_data_s[2]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.548      ;
+; -2.534 ; i2c_master:i2c_master_inst|busy ; accel_data_s[4]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.548      ;
+; -2.534 ; i2c_master:i2c_master_inst|busy ; accel_data_s[5]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.548      ;
+; -2.534 ; i2c_master:i2c_master_inst|busy ; accel_data_s[6]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.548      ;
+; -2.522 ; \fsm:busy_count[2]              ; i2c_data_wr[3]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.014     ; 3.540      ;
+; -2.522 ; \fsm:busy_count[2]              ; i2c_data_wr[6]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.014     ; 3.540      ;
+; -2.522 ; \fsm:busy_count[2]              ; i2c_data_wr[4]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.014     ; 3.540      ;
+; -2.522 ; \fsm:busy_count[2]              ; i2c_data_wr[5]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.014     ; 3.540      ;
+; -2.515 ; i2c_master:i2c_master_inst|busy ; accel_data_s[1]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.536      ;
+; -2.515 ; i2c_master:i2c_master_inst|busy ; accel_data_s[3]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.536      ;
+; -2.515 ; i2c_master:i2c_master_inst|busy ; accel_data_s[7]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.536      ;
+; -2.506 ; busy_prev                       ; accel_data_s[0]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.520      ;
+; -2.506 ; busy_prev                       ; accel_data_s[2]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.520      ;
+; -2.506 ; busy_prev                       ; accel_data_s[4]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.520      ;
+; -2.506 ; busy_prev                       ; accel_data_s[5]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.520      ;
+; -2.506 ; busy_prev                       ; accel_data_s[6]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.520      ;
+; -2.499 ; i2c_master:i2c_master_inst|busy ; accel_data_s[8]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.513      ;
+; -2.499 ; i2c_master:i2c_master_inst|busy ; accel_data_s[9]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.513      ;
+; -2.499 ; i2c_master:i2c_master_inst|busy ; accel_data_s[10]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.513      ;
+; -2.499 ; i2c_master:i2c_master_inst|busy ; accel_data_s[11]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.513      ;
+; -2.499 ; i2c_master:i2c_master_inst|busy ; accel_data_s[12]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.513      ;
+; -2.499 ; i2c_master:i2c_master_inst|busy ; accel_data_s[13]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.513      ;
+; -2.499 ; i2c_master:i2c_master_inst|busy ; accel_data_s[14]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.513      ;
+; -2.499 ; i2c_master:i2c_master_inst|busy ; accel_data_s[15]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.513      ;
+; -2.487 ; busy_prev                       ; accel_data_s[1]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.508      ;
+; -2.487 ; busy_prev                       ; accel_data_s[3]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.508      ;
+; -2.487 ; busy_prev                       ; accel_data_s[7]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.508      ;
+; -2.483 ; \fsm:busy_count[0]              ; i2c_data_wr[3]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.504      ;
+; -2.483 ; \fsm:busy_count[0]              ; i2c_data_wr[6]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.504      ;
+; -2.483 ; \fsm:busy_count[0]              ; i2c_data_wr[4]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.504      ;
+; -2.483 ; \fsm:busy_count[0]              ; i2c_data_wr[5]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.504      ;
+; -2.471 ; busy_prev                       ; accel_data_s[8]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.485      ;
+; -2.471 ; busy_prev                       ; accel_data_s[9]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.485      ;
+; -2.471 ; busy_prev                       ; accel_data_s[10]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.485      ;
+; -2.471 ; busy_prev                       ; accel_data_s[11]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.485      ;
+; -2.471 ; busy_prev                       ; accel_data_s[12]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.485      ;
+; -2.471 ; busy_prev                       ; accel_data_s[13]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.485      ;
+; -2.471 ; busy_prev                       ; accel_data_s[14]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.485      ;
+; -2.471 ; busy_prev                       ; accel_data_s[15]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.018     ; 3.485      ;
+; -2.464 ; \fsm:busy_count[2]              ; i2c_ena                    ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.003      ; 3.499      ;
+; -2.425 ; \fsm:busy_count[0]              ; i2c_ena                    ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.006      ; 3.463      ;
+; -2.416 ; \fsm:busy_count[2]              ; accel_data_s[0]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.426      ;
+; -2.416 ; \fsm:busy_count[2]              ; accel_data_s[2]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.426      ;
+; -2.416 ; \fsm:busy_count[2]              ; accel_data_s[4]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.426      ;
+; -2.416 ; \fsm:busy_count[2]              ; accel_data_s[5]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.426      ;
+; -2.416 ; \fsm:busy_count[2]              ; accel_data_s[6]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.426      ;
+; -2.409 ; i2c_master:i2c_master_inst|busy ; current_state.init         ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.006      ; 3.447      ;
+; -2.409 ; i2c_master:i2c_master_inst|busy ; get_data_done              ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.006      ; 3.447      ;
+; -2.406 ; i2c_master:i2c_master_inst|busy ; current_state.get_result_t ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.006      ; 3.444      ;
+; -2.397 ; \fsm:busy_count[2]              ; accel_data_s[1]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.015     ; 3.414      ;
+; -2.397 ; \fsm:busy_count[2]              ; accel_data_s[3]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.015     ; 3.414      ;
+; -2.397 ; \fsm:busy_count[2]              ; accel_data_s[7]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.015     ; 3.414      ;
+; -2.381 ; \fsm:busy_count[2]              ; accel_data_s[8]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.391      ;
+; -2.381 ; \fsm:busy_count[2]              ; accel_data_s[9]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.391      ;
+; -2.381 ; \fsm:busy_count[2]              ; accel_data_s[10]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.391      ;
+; -2.381 ; \fsm:busy_count[2]              ; accel_data_s[11]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.391      ;
+; -2.381 ; \fsm:busy_count[2]              ; accel_data_s[12]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.391      ;
+; -2.381 ; \fsm:busy_count[2]              ; accel_data_s[13]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.391      ;
+; -2.381 ; \fsm:busy_count[2]              ; accel_data_s[14]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.391      ;
+; -2.381 ; \fsm:busy_count[2]              ; accel_data_s[15]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.022     ; 3.391      ;
+; -2.381 ; busy_prev                       ; current_state.init         ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.006      ; 3.419      ;
+; -2.381 ; busy_prev                       ; get_data_done              ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.006      ; 3.419      ;
+; -2.378 ; busy_prev                       ; current_state.get_result_t ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.006      ; 3.416      ;
+; -2.377 ; \fsm:busy_count[0]              ; accel_data_s[0]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.390      ;
+; -2.377 ; \fsm:busy_count[0]              ; accel_data_s[2]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.390      ;
+; -2.377 ; \fsm:busy_count[0]              ; accel_data_s[4]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.390      ;
+; -2.377 ; \fsm:busy_count[0]              ; accel_data_s[5]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.390      ;
+; -2.377 ; \fsm:busy_count[0]              ; accel_data_s[6]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.390      ;
+; -2.358 ; \fsm:busy_count[1]              ; i2c_data_wr[3]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.379      ;
+; -2.358 ; \fsm:busy_count[1]              ; i2c_data_wr[6]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.379      ;
+; -2.358 ; \fsm:busy_count[1]              ; i2c_data_wr[4]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.379      ;
+; -2.358 ; \fsm:busy_count[1]              ; i2c_data_wr[5]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.379      ;
+; -2.358 ; \fsm:busy_count[0]              ; accel_data_s[1]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.012     ; 3.378      ;
+; -2.358 ; \fsm:busy_count[0]              ; accel_data_s[3]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.012     ; 3.378      ;
+; -2.358 ; \fsm:busy_count[0]              ; accel_data_s[7]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.012     ; 3.378      ;
+; -2.349 ; i2c_master:i2c_master_inst|busy ; i2c_rw                     ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.006      ; 3.387      ;
+; -2.342 ; \fsm:busy_count[0]              ; accel_data_s[8]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.355      ;
+; -2.342 ; \fsm:busy_count[0]              ; accel_data_s[9]            ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.355      ;
+; -2.342 ; \fsm:busy_count[0]              ; accel_data_s[10]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.355      ;
+; -2.342 ; \fsm:busy_count[0]              ; accel_data_s[11]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.355      ;
+; -2.342 ; \fsm:busy_count[0]              ; accel_data_s[12]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.355      ;
+; -2.342 ; \fsm:busy_count[0]              ; accel_data_s[13]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.355      ;
+; -2.342 ; \fsm:busy_count[0]              ; accel_data_s[14]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.355      ;
+; -2.342 ; \fsm:busy_count[0]              ; accel_data_s[15]           ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.019     ; 3.355      ;
+; -2.321 ; busy_prev                       ; i2c_rw                     ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; 0.006      ; 3.359      ;
+; -2.302 ; \fsm:busy_count[3]              ; i2c_data_wr[3]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.323      ;
+; -2.302 ; \fsm:busy_count[3]              ; i2c_data_wr[6]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.323      ;
+; -2.302 ; \fsm:busy_count[3]              ; i2c_data_wr[4]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.323      ;
+; -2.302 ; \fsm:busy_count[3]              ; i2c_data_wr[5]             ; clk_50Mhz    ; clk_50Mhz   ; 1.000        ; -0.011     ; 3.323      ;
++--------+---------------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'clk_50Mhz'                                                                                                                                        ;
++-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                 ; To Node                                   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.215 ; current_state.send_config_t               ; current_state.send_config_t               ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; current_state.get_result_t                ; current_state.get_result_t                ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; current_state.init                        ; current_state.init                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_ena                                   ; i2c_ena                                   ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_rw                                    ; i2c_rw                                    ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|bit_cnt[0]     ; i2c_master:i2c_master_inst|bit_cnt[0]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|state.command  ; i2c_master:i2c_master_inst|state.command  ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|state.ready    ; i2c_master:i2c_master_inst|state.ready    ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|scl_ena        ; i2c_master:i2c_master_inst|scl_ena        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|stretch        ; i2c_master:i2c_master_inst|stretch        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_data_wr[2]                            ; i2c_data_wr[2]                            ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_data_wr[3]                            ; i2c_data_wr[3]                            ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_data_wr[6]                            ; i2c_data_wr[6]                            ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_data_wr[4]                            ; i2c_data_wr[4]                            ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_data_wr[5]                            ; i2c_data_wr[5]                            ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_data_wr[0]                            ; i2c_data_wr[0]                            ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|data_rx[0]     ; i2c_master:i2c_master_inst|data_rx[0]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; get_data_done                             ; get_data_done                             ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|data_rx[1]     ; i2c_master:i2c_master_inst|data_rx[1]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|data_rx[2]     ; i2c_master:i2c_master_inst|data_rx[2]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|data_rx[3]     ; i2c_master:i2c_master_inst|data_rx[3]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|data_rx[4]     ; i2c_master:i2c_master_inst|data_rx[4]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|data_rx[5]     ; i2c_master:i2c_master_inst|data_rx[5]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|data_rx[6]     ; i2c_master:i2c_master_inst|data_rx[6]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; i2c_master:i2c_master_inst|data_rx[7]     ; i2c_master:i2c_master_inst|data_rx[7]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.367      ;
+; 0.241 ; \fsm:busy_count[31]                       ; \fsm:busy_count[31]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.393      ;
+; 0.260 ; i2c_master:i2c_master_inst|state.wr       ; i2c_master:i2c_master_inst|state.slv_ack2 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.412      ;
+; 0.291 ; i2c_master:i2c_master_inst|state.slv_ack2 ; i2c_master:i2c_master_inst|state.wr       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.443      ;
+; 0.322 ; i2c_master:i2c_master_inst|data_rx[7]     ; i2c_master:i2c_master_inst|data_rd[7]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.474      ;
+; 0.334 ; i2c_master:i2c_master_inst|data_clk       ; i2c_master:i2c_master_inst|data_clk_prev  ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.486      ;
+; 0.338 ; i2c_master:i2c_master_inst|bit_cnt[2]     ; i2c_master:i2c_master_inst|state.slv_ack1 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.490      ;
+; 0.338 ; i2c_master:i2c_master_inst|state.command  ; i2c_master:i2c_master_inst|state.slv_ack1 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.490      ;
+; 0.339 ; i2c_master:i2c_master_inst|data_rx[0]     ; i2c_master:i2c_master_inst|data_rd[0]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.013     ; 0.478      ;
+; 0.341 ; i2c_master:i2c_master_inst|bit_cnt[2]     ; i2c_master:i2c_master_inst|state.slv_ack2 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.493      ;
+; 0.350 ; i2c_master:i2c_master_inst|data_rx[3]     ; i2c_master:i2c_master_inst|data_rd[3]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.013     ; 0.489      ;
+; 0.351 ; i2c_master:i2c_master_inst|data_rx[2]     ; i2c_master:i2c_master_inst|data_rd[2]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.013     ; 0.490      ;
+; 0.351 ; i2c_master:i2c_master_inst|data_rx[4]     ; i2c_master:i2c_master_inst|data_rd[4]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.013     ; 0.490      ;
+; 0.352 ; i2c_master:i2c_master_inst|data_rx[1]     ; i2c_master:i2c_master_inst|data_rd[1]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.013     ; 0.491      ;
+; 0.353 ; \fsm:busy_count[16]                       ; \fsm:busy_count[16]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.505      ;
+; 0.354 ; i2c_master:i2c_master_inst|data_rx[6]     ; i2c_master:i2c_master_inst|data_rd[6]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.013     ; 0.493      ;
+; 0.356 ; \fsm:busy_count[4]                        ; \fsm:busy_count[4]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.508      ;
+; 0.356 ; \fsm:busy_count[7]                        ; \fsm:busy_count[7]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.508      ;
+; 0.357 ; \fsm:busy_count[1]                        ; \fsm:busy_count[1]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.509      ;
+; 0.357 ; \fsm:busy_count[17]                       ; \fsm:busy_count[17]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.509      ;
+; 0.358 ; \fsm:busy_count[9]                        ; \fsm:busy_count[9]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.510      ;
+; 0.358 ; \fsm:busy_count[11]                       ; \fsm:busy_count[11]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.510      ;
+; 0.358 ; \fsm:busy_count[18]                       ; \fsm:busy_count[18]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.510      ;
+; 0.358 ; \fsm:busy_count[25]                       ; \fsm:busy_count[25]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.510      ;
+; 0.358 ; \fsm:busy_count[27]                       ; \fsm:busy_count[27]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.510      ;
+; 0.359 ; \fsm:busy_count[13]                       ; \fsm:busy_count[13]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.511      ;
+; 0.359 ; \fsm:busy_count[14]                       ; \fsm:busy_count[14]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.511      ;
+; 0.359 ; \fsm:busy_count[15]                       ; \fsm:busy_count[15]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.511      ;
+; 0.359 ; \fsm:busy_count[20]                       ; \fsm:busy_count[20]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.511      ;
+; 0.359 ; \fsm:busy_count[23]                       ; \fsm:busy_count[23]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.511      ;
+; 0.359 ; \fsm:busy_count[29]                       ; \fsm:busy_count[29]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.511      ;
+; 0.359 ; \fsm:busy_count[30]                       ; \fsm:busy_count[30]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.511      ;
+; 0.362 ; current_state.send_config_t               ; current_state.get_result_t                ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.514      ;
+; 0.364 ; current_state.send_config_t               ; get_data_done                             ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.516      ;
+; 0.366 ; i2c_master:i2c_master_inst|state.stop     ; i2c_master:i2c_master_inst|state.ready    ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.518      ;
+; 0.369 ; \fsm:busy_count[3]                        ; \fsm:busy_count[3]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; \fsm:busy_count[8]                        ; \fsm:busy_count[8]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; \fsm:busy_count[10]                       ; \fsm:busy_count[10]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; \fsm:busy_count[19]                       ; \fsm:busy_count[19]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; \fsm:busy_count[24]                       ; \fsm:busy_count[24]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; \fsm:busy_count[26]                       ; \fsm:busy_count[26]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.521      ;
+; 0.370 ; \fsm:busy_count[5]                        ; \fsm:busy_count[5]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.522      ;
+; 0.370 ; \fsm:busy_count[6]                        ; \fsm:busy_count[6]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.522      ;
+; 0.370 ; \fsm:busy_count[12]                       ; \fsm:busy_count[12]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.522      ;
+; 0.370 ; \fsm:busy_count[21]                       ; \fsm:busy_count[21]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.522      ;
+; 0.370 ; \fsm:busy_count[22]                       ; \fsm:busy_count[22]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.522      ;
+; 0.370 ; \fsm:busy_count[28]                       ; \fsm:busy_count[28]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.522      ;
+; 0.378 ; i2c_master:i2c_master_inst|state.ready    ; i2c_master:i2c_master_inst|state.start    ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.530      ;
+; 0.396 ; i2c_master:i2c_master_inst|bit_cnt[1]     ; i2c_master:i2c_master_inst|state.slv_ack2 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.548      ;
+; 0.403 ; i2c_master:i2c_master_inst|bit_cnt[0]     ; i2c_master:i2c_master_inst|state.slv_ack1 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.555      ;
+; 0.424 ; i2c_rw                                    ; i2c_master:i2c_master_inst|addr_rw[0]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.001      ; 0.577      ;
+; 0.426 ; i2c_master:i2c_master_inst|state.start    ; i2c_master:i2c_master_inst|busy           ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.578      ;
+; 0.444 ; i2c_master:i2c_master_inst|data_rx[5]     ; i2c_master:i2c_master_inst|data_rd[5]     ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; -0.013     ; 0.583      ;
+; 0.445 ; \fsm:busy_count[0]                        ; \fsm:busy_count[0]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.597      ;
+; 0.456 ; i2c_master:i2c_master_inst|bit_cnt[1]     ; i2c_master:i2c_master_inst|state.slv_ack1 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.608      ;
+; 0.471 ; i2c_master:i2c_master_inst|state.ready    ; i2c_master:i2c_master_inst|busy           ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.623      ;
+; 0.472 ; i2c_master:i2c_master_inst|bit_cnt[0]     ; i2c_master:i2c_master_inst|state.slv_ack2 ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.624      ;
+; 0.482 ; current_state.init                        ; current_state.send_config_t               ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.634      ;
+; 0.491 ; \fsm:busy_count[16]                       ; \fsm:busy_count[17]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.643      ;
+; 0.494 ; \fsm:busy_count[4]                        ; \fsm:busy_count[5]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.646      ;
+; 0.495 ; \fsm:busy_count[17]                       ; \fsm:busy_count[18]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.647      ;
+; 0.496 ; \fsm:busy_count[9]                        ; \fsm:busy_count[10]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.648      ;
+; 0.496 ; \fsm:busy_count[18]                       ; \fsm:busy_count[19]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.648      ;
+; 0.496 ; \fsm:busy_count[25]                       ; \fsm:busy_count[26]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.648      ;
+; 0.496 ; \fsm:busy_count[11]                       ; \fsm:busy_count[12]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.648      ;
+; 0.496 ; \fsm:busy_count[27]                       ; \fsm:busy_count[28]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.648      ;
+; 0.497 ; \fsm:busy_count[30]                       ; \fsm:busy_count[31]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.649      ;
+; 0.497 ; \fsm:busy_count[13]                       ; \fsm:busy_count[14]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.649      ;
+; 0.497 ; \fsm:busy_count[14]                       ; \fsm:busy_count[15]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.649      ;
+; 0.497 ; \fsm:busy_count[29]                       ; \fsm:busy_count[30]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.649      ;
+; 0.497 ; \fsm:busy_count[20]                       ; \fsm:busy_count[21]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.649      ;
+; 0.498 ; current_state.init                        ; i2c_rw                                    ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.650      ;
+; 0.509 ; \fsm:busy_count[3]                        ; \fsm:busy_count[4]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.661      ;
+; 0.509 ; \fsm:busy_count[8]                        ; \fsm:busy_count[9]                        ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.661      ;
+; 0.509 ; \fsm:busy_count[10]                       ; \fsm:busy_count[11]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.661      ;
+; 0.509 ; \fsm:busy_count[24]                       ; \fsm:busy_count[25]                       ; clk_50Mhz    ; clk_50Mhz   ; 0.000        ; 0.000      ; 0.661      ;
++-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'clk_50Mhz'                                                                     ;
++--------+--------------+----------------+------------------+-----------+------------+----------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock     ; Clock Edge ; Target                     ;
++--------+--------------+----------------+------------------+-----------+------------+----------------------------+
+; -1.380 ; 1.000        ; 2.380          ; Port Rate        ; clk_50Mhz ; Rise       ; clk_50Mhz                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[0]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[0]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[10]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[10]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[11]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[11]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[12]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[12]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[13]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[13]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[14]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[14]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[15]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[15]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[16]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[16]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[17]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[17]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[18]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[18]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[19]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[19]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[1]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[1]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[20]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[20]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[21]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[21]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[22]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[22]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[23]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[23]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[24]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[24]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[25]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[25]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[26]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[26]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[27]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[27]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[28]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[28]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[29]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[29]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[2]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[2]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[30]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[30]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[31]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[31]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[3]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[3]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[4]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[4]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[5]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[5]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[6]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[6]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[7]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[7]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[8]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[8]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; \fsm:busy_count[9]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; \fsm:busy_count[9]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[0]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[0]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[10]           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[10]           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[11]           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[11]           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[12]           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[12]           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[13]           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[13]           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[14]           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[14]           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[15]           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[15]           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[1]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[1]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[2]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[2]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[3]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[3]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[4]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[4]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[5]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[5]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[6]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[6]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[7]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[7]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[8]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[8]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; accel_data_s[9]            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; accel_data_s[9]            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; busy_prev                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_50Mhz ; Rise       ; busy_prev                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_50Mhz ; Rise       ; current_state.get_result_t ;
++--------+--------------+----------------+------------------+-----------+------------+----------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Setup Times                                                                    ;
++------------------+------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+------------+--------+--------+------------+-----------------+
+; ask_for_position ; clk_50Mhz  ; -0.101 ; -0.101 ; Rise       ; clk_50Mhz       ;
+; i2c_scl          ; clk_50Mhz  ; 2.235  ; 2.235  ; Rise       ; clk_50Mhz       ;
+; i2c_sda          ; clk_50Mhz  ; 2.345  ; 2.345  ; Rise       ; clk_50Mhz       ;
+; reset            ; clk_50Mhz  ; 0.986  ; 0.986  ; Rise       ; clk_50Mhz       ;
++------------------+------------+--------+--------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Hold Times                                                                     ;
++------------------+------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+------------+--------+--------+------------+-----------------+
+; ask_for_position ; clk_50Mhz  ; 0.264  ; 0.264  ; Rise       ; clk_50Mhz       ;
+; i2c_scl          ; clk_50Mhz  ; -2.115 ; -2.115 ; Rise       ; clk_50Mhz       ;
+; i2c_sda          ; clk_50Mhz  ; -2.220 ; -2.220 ; Rise       ; clk_50Mhz       ;
+; reset            ; clk_50Mhz  ; 0.161  ; 0.161  ; Rise       ; clk_50Mhz       ;
++------------------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------------+
+; Clock to Output Times                                                       ;
++-----------------+------------+-------+-------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------------+------------+-------+-------+------------+-----------------+
+; accel_data[*]   ; clk_50Mhz  ; 4.642 ; 4.642 ; Rise       ; clk_50Mhz       ;
+;  accel_data[0]  ; clk_50Mhz  ; 4.183 ; 4.183 ; Rise       ; clk_50Mhz       ;
+;  accel_data[1]  ; clk_50Mhz  ; 4.642 ; 4.642 ; Rise       ; clk_50Mhz       ;
+;  accel_data[2]  ; clk_50Mhz  ; 4.458 ; 4.458 ; Rise       ; clk_50Mhz       ;
+;  accel_data[3]  ; clk_50Mhz  ; 4.530 ; 4.530 ; Rise       ; clk_50Mhz       ;
+;  accel_data[4]  ; clk_50Mhz  ; 4.493 ; 4.493 ; Rise       ; clk_50Mhz       ;
+;  accel_data[5]  ; clk_50Mhz  ; 4.443 ; 4.443 ; Rise       ; clk_50Mhz       ;
+;  accel_data[6]  ; clk_50Mhz  ; 4.566 ; 4.566 ; Rise       ; clk_50Mhz       ;
+;  accel_data[7]  ; clk_50Mhz  ; 4.520 ; 4.520 ; Rise       ; clk_50Mhz       ;
+;  accel_data[8]  ; clk_50Mhz  ; 4.363 ; 4.363 ; Rise       ; clk_50Mhz       ;
+;  accel_data[9]  ; clk_50Mhz  ; 4.459 ; 4.459 ; Rise       ; clk_50Mhz       ;
+;  accel_data[10] ; clk_50Mhz  ; 4.196 ; 4.196 ; Rise       ; clk_50Mhz       ;
+;  accel_data[11] ; clk_50Mhz  ; 4.406 ; 4.406 ; Rise       ; clk_50Mhz       ;
+;  accel_data[12] ; clk_50Mhz  ; 4.319 ; 4.319 ; Rise       ; clk_50Mhz       ;
+;  accel_data[13] ; clk_50Mhz  ; 4.388 ; 4.388 ; Rise       ; clk_50Mhz       ;
+;  accel_data[14] ; clk_50Mhz  ; 4.194 ; 4.194 ; Rise       ; clk_50Mhz       ;
+;  accel_data[15] ; clk_50Mhz  ; 4.394 ; 4.394 ; Rise       ; clk_50Mhz       ;
+; i2c_scl         ; clk_50Mhz  ; 3.725 ; 3.725 ; Rise       ; clk_50Mhz       ;
+; i2c_sda         ; clk_50Mhz  ; 4.350 ; 4.350 ; Rise       ; clk_50Mhz       ;
++-----------------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                               ;
++-----------------+------------+-------+-------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------------+------------+-------+-------+------------+-----------------+
+; accel_data[*]   ; clk_50Mhz  ; 3.716 ; 3.716 ; Rise       ; clk_50Mhz       ;
+;  accel_data[0]  ; clk_50Mhz  ; 3.716 ; 3.716 ; Rise       ; clk_50Mhz       ;
+;  accel_data[1]  ; clk_50Mhz  ; 4.068 ; 4.068 ; Rise       ; clk_50Mhz       ;
+;  accel_data[2]  ; clk_50Mhz  ; 3.989 ; 3.989 ; Rise       ; clk_50Mhz       ;
+;  accel_data[3]  ; clk_50Mhz  ; 3.859 ; 3.859 ; Rise       ; clk_50Mhz       ;
+;  accel_data[4]  ; clk_50Mhz  ; 4.123 ; 4.123 ; Rise       ; clk_50Mhz       ;
+;  accel_data[5]  ; clk_50Mhz  ; 3.975 ; 3.975 ; Rise       ; clk_50Mhz       ;
+;  accel_data[6]  ; clk_50Mhz  ; 4.012 ; 4.012 ; Rise       ; clk_50Mhz       ;
+;  accel_data[7]  ; clk_50Mhz  ; 3.851 ; 3.851 ; Rise       ; clk_50Mhz       ;
+;  accel_data[8]  ; clk_50Mhz  ; 3.898 ; 3.898 ; Rise       ; clk_50Mhz       ;
+;  accel_data[9]  ; clk_50Mhz  ; 3.991 ; 3.991 ; Rise       ; clk_50Mhz       ;
+;  accel_data[10] ; clk_50Mhz  ; 3.738 ; 3.738 ; Rise       ; clk_50Mhz       ;
+;  accel_data[11] ; clk_50Mhz  ; 3.937 ; 3.937 ; Rise       ; clk_50Mhz       ;
+;  accel_data[12] ; clk_50Mhz  ; 3.754 ; 3.754 ; Rise       ; clk_50Mhz       ;
+;  accel_data[13] ; clk_50Mhz  ; 3.929 ; 3.929 ; Rise       ; clk_50Mhz       ;
+;  accel_data[14] ; clk_50Mhz  ; 3.733 ; 3.733 ; Rise       ; clk_50Mhz       ;
+;  accel_data[15] ; clk_50Mhz  ; 3.940 ; 3.940 ; Rise       ; clk_50Mhz       ;
+; i2c_scl         ; clk_50Mhz  ; 3.677 ; 3.677 ; Rise       ; clk_50Mhz       ;
+; i2c_sda         ; clk_50Mhz  ; 3.899 ; 3.899 ; Rise       ; clk_50Mhz       ;
++-----------------+------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                            ;
++------------------+----------+-------+----------+---------+---------------------+
+; Clock            ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+----------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -6.745   ; 0.215 ; N/A      ; N/A     ; -1.380              ;
+;  clk_50Mhz       ; -6.745   ; 0.215 ; N/A      ; N/A     ; -1.380              ;
+; Design-wide TNS  ; -371.766 ; 0.0   ; 0.0      ; 0.0     ; -111.38             ;
+;  clk_50Mhz       ; -371.766 ; 0.000 ; N/A      ; N/A     ; -111.380            ;
++------------------+----------+-------+----------+---------+---------------------+
+
+
++------------------------------------------------------------------------------+
+; Setup Times                                                                  ;
++------------------+------------+-------+-------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------+------------+-------+-------+------------+-----------------+
+; ask_for_position ; clk_50Mhz  ; 0.264 ; 0.264 ; Rise       ; clk_50Mhz       ;
+; i2c_scl          ; clk_50Mhz  ; 4.106 ; 4.106 ; Rise       ; clk_50Mhz       ;
+; i2c_sda          ; clk_50Mhz  ; 4.255 ; 4.255 ; Rise       ; clk_50Mhz       ;
+; reset            ; clk_50Mhz  ; 2.585 ; 2.585 ; Rise       ; clk_50Mhz       ;
++------------------+------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Hold Times                                                                     ;
++------------------+------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+------------+--------+--------+------------+-----------------+
+; ask_for_position ; clk_50Mhz  ; 0.264  ; 0.264  ; Rise       ; clk_50Mhz       ;
+; i2c_scl          ; clk_50Mhz  ; -2.115 ; -2.115 ; Rise       ; clk_50Mhz       ;
+; i2c_sda          ; clk_50Mhz  ; -2.220 ; -2.220 ; Rise       ; clk_50Mhz       ;
+; reset            ; clk_50Mhz  ; 0.161  ; 0.161  ; Rise       ; clk_50Mhz       ;
++------------------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------------+
+; Clock to Output Times                                                       ;
++-----------------+------------+-------+-------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------------+------------+-------+-------+------------+-----------------+
+; accel_data[*]   ; clk_50Mhz  ; 8.668 ; 8.668 ; Rise       ; clk_50Mhz       ;
+;  accel_data[0]  ; clk_50Mhz  ; 7.676 ; 7.676 ; Rise       ; clk_50Mhz       ;
+;  accel_data[1]  ; clk_50Mhz  ; 8.668 ; 8.668 ; Rise       ; clk_50Mhz       ;
+;  accel_data[2]  ; clk_50Mhz  ; 8.218 ; 8.218 ; Rise       ; clk_50Mhz       ;
+;  accel_data[3]  ; clk_50Mhz  ; 8.424 ; 8.424 ; Rise       ; clk_50Mhz       ;
+;  accel_data[4]  ; clk_50Mhz  ; 8.308 ; 8.308 ; Rise       ; clk_50Mhz       ;
+;  accel_data[5]  ; clk_50Mhz  ; 8.175 ; 8.175 ; Rise       ; clk_50Mhz       ;
+;  accel_data[6]  ; clk_50Mhz  ; 8.428 ; 8.428 ; Rise       ; clk_50Mhz       ;
+;  accel_data[7]  ; clk_50Mhz  ; 8.411 ; 8.411 ; Rise       ; clk_50Mhz       ;
+;  accel_data[8]  ; clk_50Mhz  ; 8.042 ; 8.042 ; Rise       ; clk_50Mhz       ;
+;  accel_data[9]  ; clk_50Mhz  ; 8.204 ; 8.204 ; Rise       ; clk_50Mhz       ;
+;  accel_data[10] ; clk_50Mhz  ; 7.703 ; 7.703 ; Rise       ; clk_50Mhz       ;
+;  accel_data[11] ; clk_50Mhz  ; 8.141 ; 8.141 ; Rise       ; clk_50Mhz       ;
+;  accel_data[12] ; clk_50Mhz  ; 7.947 ; 7.947 ; Rise       ; clk_50Mhz       ;
+;  accel_data[13] ; clk_50Mhz  ; 8.112 ; 8.112 ; Rise       ; clk_50Mhz       ;
+;  accel_data[14] ; clk_50Mhz  ; 7.695 ; 7.695 ; Rise       ; clk_50Mhz       ;
+;  accel_data[15] ; clk_50Mhz  ; 8.127 ; 8.127 ; Rise       ; clk_50Mhz       ;
+; i2c_scl         ; clk_50Mhz  ; 6.722 ; 6.722 ; Rise       ; clk_50Mhz       ;
+; i2c_sda         ; clk_50Mhz  ; 8.114 ; 8.114 ; Rise       ; clk_50Mhz       ;
++-----------------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                               ;
++-----------------+------------+-------+-------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------------+------------+-------+-------+------------+-----------------+
+; accel_data[*]   ; clk_50Mhz  ; 3.716 ; 3.716 ; Rise       ; clk_50Mhz       ;
+;  accel_data[0]  ; clk_50Mhz  ; 3.716 ; 3.716 ; Rise       ; clk_50Mhz       ;
+;  accel_data[1]  ; clk_50Mhz  ; 4.068 ; 4.068 ; Rise       ; clk_50Mhz       ;
+;  accel_data[2]  ; clk_50Mhz  ; 3.989 ; 3.989 ; Rise       ; clk_50Mhz       ;
+;  accel_data[3]  ; clk_50Mhz  ; 3.859 ; 3.859 ; Rise       ; clk_50Mhz       ;
+;  accel_data[4]  ; clk_50Mhz  ; 4.123 ; 4.123 ; Rise       ; clk_50Mhz       ;
+;  accel_data[5]  ; clk_50Mhz  ; 3.975 ; 3.975 ; Rise       ; clk_50Mhz       ;
+;  accel_data[6]  ; clk_50Mhz  ; 4.012 ; 4.012 ; Rise       ; clk_50Mhz       ;
+;  accel_data[7]  ; clk_50Mhz  ; 3.851 ; 3.851 ; Rise       ; clk_50Mhz       ;
+;  accel_data[8]  ; clk_50Mhz  ; 3.898 ; 3.898 ; Rise       ; clk_50Mhz       ;
+;  accel_data[9]  ; clk_50Mhz  ; 3.991 ; 3.991 ; Rise       ; clk_50Mhz       ;
+;  accel_data[10] ; clk_50Mhz  ; 3.738 ; 3.738 ; Rise       ; clk_50Mhz       ;
+;  accel_data[11] ; clk_50Mhz  ; 3.937 ; 3.937 ; Rise       ; clk_50Mhz       ;
+;  accel_data[12] ; clk_50Mhz  ; 3.754 ; 3.754 ; Rise       ; clk_50Mhz       ;
+;  accel_data[13] ; clk_50Mhz  ; 3.929 ; 3.929 ; Rise       ; clk_50Mhz       ;
+;  accel_data[14] ; clk_50Mhz  ; 3.733 ; 3.733 ; Rise       ; clk_50Mhz       ;
+;  accel_data[15] ; clk_50Mhz  ; 3.940 ; 3.940 ; Rise       ; clk_50Mhz       ;
+; i2c_scl         ; clk_50Mhz  ; 3.677 ; 3.677 ; Rise       ; clk_50Mhz       ;
+; i2c_sda         ; clk_50Mhz  ; 3.899 ; 3.899 ; Rise       ; clk_50Mhz       ;
++-----------------+------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------+
+; Setup Transfers                                                    ;
++------------+-----------+----------+----------+----------+----------+
+; From Clock ; To Clock  ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+-----------+----------+----------+----------+----------+
+; clk_50Mhz  ; clk_50Mhz ; 30572    ; 0        ; 0        ; 0        ;
++------------+-----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++--------------------------------------------------------------------+
+; Hold Transfers                                                     ;
++------------+-----------+----------+----------+----------+----------+
+; From Clock ; To Clock  ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+-----------+----------+----------+----------+----------+
+; clk_50Mhz  ; clk_50Mhz ; 30572    ; 0        ; 0        ; 0        ;
++------------+-----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 4     ; 4    ;
+; Unconstrained Input Port Paths  ; 121   ; 121  ;
+; Unconstrained Output Ports      ; 18    ; 18   ;
+; Unconstrained Output Port Paths ; 38    ; 38   ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 32-bit TimeQuest Timing Analyzer
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Sun Apr 23 16:16:38 2023
+Info: Command: quartus_sta CubeSat -c CubeSat
+Info: qsta_default_script.tcl version: #1
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'CubeSat.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clk_50Mhz clk_50Mhz
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow Model
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -6.745
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -6.745      -371.766 clk_50Mhz 
+Info (332146): Worst-case hold slack is 0.391
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.391         0.000 clk_50Mhz 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.380
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.380      -111.380 clk_50Mhz 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info: Analyzing Fast Model
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -2.640
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -2.640      -117.532 clk_50Mhz 
+Info (332146): Worst-case hold slack is 0.215
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.215         0.000 clk_50Mhz 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.380
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.380      -111.380 clk_50Mhz 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 32-bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 319 megabytes
+    Info: Processing ended: Sun Apr 23 16:16:39 2023
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+
