@@ -11,8 +11,12 @@ entity accelerometer is
         accel_data          : out std_logic_vector(15 downto 0);
         
         -- I2C interface
-        i2c_scl             : inout std_logic;
-        i2c_sda             : inout std_logic
+        i2c_ena      : out std_logic := '0';
+        i2c_busy     : in std_logic;
+        i2c_rw       : out std_logic;
+        i2c_data_wr  : out std_logic_vector(7 downto 0);
+        i2c_data_rd  : in std_logic_vector(7 downto 0);
+        i2c_addr     : out std_logic_vector(6 downto 0)
     );
 end entity;
 
@@ -33,34 +37,13 @@ architecture rtl of accelerometer is
     type state_type is (init, send_config_t, get_result_t);
     signal current_state : state_type := init;
 
-    -- I2C interface
-    signal i2c_ena      : std_logic := '0';
-    signal i2c_busy     : std_logic;
-    signal busy_prev    : std_logic;
-    signal i2c_rw       : std_logic;
-    signal i2c_data_wr  : std_logic_vector(7 downto 0);
-    signal i2c_data_rd  : std_logic_vector(7 downto 0);
-    signal i2c_addr     : std_logic_vector(6 downto 0);
-    signal accel_data_s : std_logic_vector(15 downto 0);
+    -- I2C Signals
+    signal busy_prev    : std_logic := '0';
 
+    signal accel_data_s : std_logic_vector(15 downto 0) := (others => '0');
     signal get_data_done : std_logic := '0';
 
 begin
-
-    i2c_master_inst: entity work.i2c_master
-        port map (
-            clk       => clk_50Mhz,
-            reset_n   => reset,
-            ena       => i2c_ena,
-            addr      => i2c_addr,
-            rw        => i2c_rw,
-            data_wr   => i2c_data_wr,
-            busy      => i2c_busy,
-            data_rd   => i2c_data_rd,
-            ack_error => open,
-            sda       => i2c_sda,
-            scl       => i2c_scl
-        );
     
     fsm: process(clk_50Mhz, reset)
         variable busy_count : integer := 0;
