@@ -8,15 +8,15 @@ entity altimeter is
         reset               : in std_logic;
         
         ask_for_pressure    : in std_logic;
-        pressure_data       : out std_logic_vector(19 downto 0);
+        altitude_data       : out std_logic_vector(15 downto 0);
         
-        -- I2C interface
-        i2c_ena      : out std_logic := '0';
-        i2c_busy     : in std_logic;
-        i2c_rw       : out std_logic;
-        i2c_data_wr  : out std_logic_vector(7 downto 0);
-        i2c_data_rd  : in std_logic_vector(7 downto 0);
-        i2c_addr     : out std_logic_vector(6 downto 0)
+        -- SPI interface
+        clk             : in      std_logic;
+        reset_n         : in      std_logic;
+        miso            : in      std_logic;
+        sclk            : buffer  std_logic;
+        cs              : buffer  std_logic_vector(0 downto 0);
+        mosi            : out     std_logic
     );
 end entity;
 
@@ -30,13 +30,13 @@ architecture rtl of altimeter is
 
     -- States
     type state_type is (init, send_config_t, get_result_t);
-    signal current_state : state_type := init;
+    signal current_state    : state_type := init;
 
-    -- I2C Signals
-    signal busy_prev    : std_logic := '0';
+    -- SPI Signals
+    signal busy_prev        : std_logic := '0';
 
-    signal get_pressure                                                 : std_logic := '0';
-    signal get_data_done : std_logic := '0';
+    signal get_pressure     : std_logic := '0';
+    signal get_data_done    : std_logic := '0';
     
 begin
 
