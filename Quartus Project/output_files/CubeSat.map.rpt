@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CubeSat
-Sun Apr 23 16:16:32 2023
+Sun Apr 23 19:53:02 2023
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -49,15 +49,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Apr 23 16:16:32 2023           ;
+; Analysis & Synthesis Status        ; Successful - Sun Apr 23 19:53:02 2023           ;
 ; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; CubeSat                                         ;
 ; Top-level Entity Name              ; accelerometer                                   ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 223                                             ;
-;     Total combinational functions  ; 191                                             ;
-;     Dedicated logic registers      ; 110                                             ;
-; Total registers                    ; 110                                             ;
+; Total logic elements               ; 131                                             ;
+;     Total combinational functions  ; 128                                             ;
+;     Dedicated logic registers      ; 64                                              ;
+; Total registers                    ; 64                                              ;
 ; Total pins                         ; 21                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -180,28 +180,28 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 223       ;
+; Estimated Total logic elements              ; 131       ;
 ;                                             ;           ;
-; Total combinational functions               ; 191       ;
+; Total combinational functions               ; 128       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 83        ;
-;     -- 3 input functions                    ; 38        ;
-;     -- <=2 input functions                  ; 70        ;
+;     -- 4 input functions                    ; 59        ;
+;     -- 3 input functions                    ; 17        ;
+;     -- <=2 input functions                  ; 52        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 154       ;
+;     -- normal mode                          ; 91        ;
 ;     -- arithmetic mode                      ; 37        ;
 ;                                             ;           ;
-; Total registers                             ; 110       ;
-;     -- Dedicated logic registers            ; 110       ;
+; Total registers                             ; 64        ;
+;     -- Dedicated logic registers            ; 64        ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 21        ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ; Maximum fan-out node                        ; clk_50Mhz ;
-; Maximum fan-out                             ; 110       ;
-; Total fan-out                               ; 978       ;
-; Average fan-out                             ; 3.04      ;
+; Maximum fan-out                             ; 64        ;
+; Total fan-out                               ; 559       ;
+; Average fan-out                             ; 2.62      ;
 +---------------------------------------------+-----------+
 
 
@@ -210,22 +210,23 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
 ; Compilation Hierarchy Node      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                       ; Library Name ;
 +---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
-; |accelerometer                  ; 191 (94)          ; 110 (61)     ; 0           ; 0            ; 0       ; 0         ; 21   ; 0            ; |accelerometer                            ; work         ;
-;    |i2c_master:i2c_master_inst| ; 97 (97)           ; 49 (49)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |accelerometer|i2c_master:i2c_master_inst ; work         ;
+; |accelerometer                  ; 128 (57)          ; 64 (36)      ; 0           ; 0            ; 0       ; 0         ; 21   ; 0            ; |accelerometer                            ; work         ;
+;    |i2c_master:i2c_master_inst| ; 71 (71)           ; 28 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |accelerometer|i2c_master:i2c_master_inst ; work         ;
 +---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
-+-------------------------------------------------------------------------------------------------------------+
-; State Machine - |accelerometer|current_state                                                                ;
-+-----------------------------+----------------------------+-----------------------------+--------------------+
-; Name                        ; current_state.get_result_t ; current_state.send_config_t ; current_state.init ;
-+-----------------------------+----------------------------+-----------------------------+--------------------+
-; current_state.init          ; 0                          ; 0                           ; 0                  ;
-; current_state.send_config_t ; 0                          ; 1                           ; 1                  ;
-; current_state.get_result_t  ; 1                          ; 0                           ; 1                  ;
-+-----------------------------+----------------------------+-----------------------------+--------------------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |accelerometer|current_state                                                                                         ;
++-----------------------------+----------------------------+-----------------------------+--------------------+------------------------+
+; Name                        ; current_state.get_result_t ; current_state.send_config_t ; current_state.init ; current_state.get_data ;
++-----------------------------+----------------------------+-----------------------------+--------------------+------------------------+
+; current_state.get_data      ; 0                          ; 0                           ; 0                  ; 0                      ;
+; current_state.init          ; 0                          ; 0                           ; 1                  ; 1                      ;
+; current_state.send_config_t ; 0                          ; 1                           ; 0                  ; 1                      ;
+; current_state.get_result_t  ; 1                          ; 0                           ; 0                  ; 1                      ;
++-----------------------------+----------------------------+-----------------------------+--------------------+------------------------+
 
 
 Encoding Type:  One-Hot
@@ -246,37 +247,42 @@ Encoding Type:  One-Hot
 +----------------+------------+----------------+----------------+----------+----------+----------------+---------------+-------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                            ;
-+-------------------------------------------+---------------------------------------------------+
-; Register name                             ; Reason for Removal                                ;
-+-------------------------------------------+---------------------------------------------------+
-; i2c_addr[1,3,6]                           ; Merged with i2c_addr[0]                           ;
-; i2c_addr[4,5]                             ; Merged with i2c_addr[2]                           ;
-; i2c_data_wr[1]                            ; Merged with i2c_data_wr[0]                        ;
-; i2c_master:i2c_master_inst|addr_rw[2,4,7] ; Merged with i2c_master:i2c_master_inst|addr_rw[1] ;
-; i2c_master:i2c_master_inst|addr_rw[5,6]   ; Merged with i2c_master:i2c_master_inst|addr_rw[3] ;
-; i2c_master:i2c_master_inst|data_tx[1]     ; Merged with i2c_master:i2c_master_inst|data_tx[0] ;
-; i2c_addr[0]                               ; Stuck at GND due to stuck port data_in            ;
-; i2c_master:i2c_master_inst|addr_rw[1]     ; Stuck at GND due to stuck port data_in            ;
-; i2c_addr[2]                               ; Stuck at VCC due to stuck port data_in            ;
-; i2c_data_wr[7]                            ; Stuck at GND due to stuck port data_in            ;
-; i2c_master:i2c_master_inst|addr_rw[3]     ; Stuck at VCC due to stuck port data_in            ;
-; i2c_master:i2c_master_inst|data_tx[7]     ; Stuck at GND due to stuck port data_in            ;
-; Total Number of Removed Registers = 18    ;                                                   ;
-+-------------------------------------------+---------------------------------------------------+
++--------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                               ;
++----------------------------------------------+---------------------------------------------------+
+; Register name                                ; Reason for Removal                                ;
++----------------------------------------------+---------------------------------------------------+
+; i2c_addr[6]                                  ; Stuck at GND due to stuck port data_in            ;
+; i2c_addr[4,5]                                ; Stuck at VCC due to stuck port data_in            ;
+; i2c_addr[3]                                  ; Stuck at GND due to stuck port data_in            ;
+; i2c_addr[2]                                  ; Stuck at VCC due to stuck port data_in            ;
+; i2c_addr[0,1]                                ; Stuck at GND due to stuck port data_in            ;
+; i2c_data_wr[0,1,5..7]                        ; Stuck at GND due to stuck port data_in            ;
+; i2c_master:i2c_master_inst|addr_rw[2,4,7]    ; Merged with i2c_master:i2c_master_inst|addr_rw[1] ;
+; i2c_master:i2c_master_inst|data_tx[0,1,5..7] ; Merged with i2c_master:i2c_master_inst|addr_rw[1] ;
+; i2c_master:i2c_master_inst|addr_rw[5,6]      ; Merged with i2c_master:i2c_master_inst|addr_rw[3] ;
+; i2c_master:i2c_master_inst|data_tx[3,4]      ; Merged with i2c_master:i2c_master_inst|data_tx[2] ;
+; i2c_data_wr[3,4]                             ; Merged with i2c_data_wr[2]                        ;
+; i2c_master:i2c_master_inst|addr_rw[1]        ; Stuck at GND due to stuck port data_in            ;
+; i2c_master:i2c_master_inst|addr_rw[3]        ; Stuck at VCC due to stuck port data_in            ;
+; current_state.init                           ; Lost fanout                                       ;
+; current_state.send_config_t                  ; Lost fanout                                       ;
+; current_state.get_result_t                   ; Lost fanout                                       ;
+; current_state.get_data                       ; Stuck at GND due to stuck port data_in            ;
+; Total Number of Removed Registers = 32       ;                                                   ;
++----------------------------------------------+---------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                         ;
-+----------------+---------------------------+----------------------------------------+
-; Register name  ; Reason for Removal        ; Registers Removed due to This Register ;
-+----------------+---------------------------+----------------------------------------+
-; i2c_addr[0]    ; Stuck at GND              ; i2c_master:i2c_master_inst|addr_rw[1]  ;
-;                ; due to stuck port data_in ;                                        ;
-; i2c_data_wr[7] ; Stuck at GND              ; i2c_master:i2c_master_inst|data_tx[7]  ;
-;                ; due to stuck port data_in ;                                        ;
-+----------------+---------------------------+----------------------------------------+
++------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                        ;
++---------------+---------------------------+----------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register ;
++---------------+---------------------------+----------------------------------------+
+; i2c_addr[2]   ; Stuck at VCC              ; i2c_master:i2c_master_inst|addr_rw[3]  ;
+;               ; due to stuck port data_in ;                                        ;
+; i2c_addr[0]   ; Stuck at GND              ; i2c_master:i2c_master_inst|addr_rw[1]  ;
+;               ; due to stuck port data_in ;                                        ;
++---------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -284,12 +290,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 110   ;
+; Total registers                              ; 64    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 1     ;
-; Number of registers using Asynchronous Clear ; 67    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 23    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 89    ;
+; Number of registers using Clock Enable       ; 19    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -299,11 +305,11 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; i2c_master:i2c_master_inst|busy        ; 8       ;
-; i2c_master:i2c_master_inst|bit_cnt[2]  ; 22      ;
-; i2c_master:i2c_master_inst|bit_cnt[1]  ; 22      ;
-; i2c_master:i2c_master_inst|bit_cnt[0]  ; 24      ;
 ; i2c_master:i2c_master_inst|sda_int     ; 2       ;
+; i2c_master:i2c_master_inst|bit_cnt[2]  ; 10      ;
+; i2c_master:i2c_master_inst|bit_cnt[1]  ; 11      ;
+; i2c_master:i2c_master_inst|bit_cnt[0]  ; 12      ;
+; i2c_master:i2c_master_inst|busy        ; 4       ;
 ; Total number of inverted registers = 5 ;         ;
 +----------------------------------------+---------+
 
@@ -313,12 +319,10 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |accelerometer|i2c_master:i2c_master_inst|addr_rw[3] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |accelerometer|i2c_data_wr[2]                        ;
-; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |accelerometer|\fsm:busy_count[30]                   ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |accelerometer|i2c_data_wr[6]                        ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |accelerometer|i2c_master:i2c_master_inst|bit_cnt[2] ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |accelerometer|current_state                         ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 0 LEs                ; 4 LEs                  ; Yes        ; |accelerometer|i2c_master:i2c_master_inst|data_tx[2] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |accelerometer|\fsm:busy_cnt[3]                      ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |accelerometer|i2c_master:i2c_master_inst|bit_cnt[0] ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |accelerometer|current_state                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
 
 
@@ -338,6 +342,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port      ; Type   ; Severity ; Details                                                                             ;
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
+; data_rd   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; ack_error ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
 
@@ -357,7 +362,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Apr 23 16:16:31 2023
+    Info: Processing started: Sun Apr 23 19:53:00 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CubeSat -c CubeSat
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file /users/jaysb/desktop/projets/cesi/cours/cubesat/sources/component_drivers/altimeter.vhd
@@ -370,20 +375,41 @@ Info (12021): Found 2 design units, including 1 entities, in source file /users/
     Info (12022): Found design unit 1: accelerometer-rtl
     Info (12023): Found entity 1: accelerometer
 Info (12127): Elaborating entity "accelerometer" for the top level hierarchy
+Warning (10540): VHDL Signal Declaration warning at accelerometer.vhd(46): used explicit default value for signal "get_data_done" because signal was never assigned a value
 Info (12128): Elaborating entity "i2c_master" for hierarchy "i2c_master:i2c_master_inst"
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "accel_data[0]" is stuck at GND
+    Warning (13410): Pin "accel_data[1]" is stuck at GND
+    Warning (13410): Pin "accel_data[2]" is stuck at GND
+    Warning (13410): Pin "accel_data[3]" is stuck at GND
+    Warning (13410): Pin "accel_data[4]" is stuck at GND
+    Warning (13410): Pin "accel_data[5]" is stuck at GND
+    Warning (13410): Pin "accel_data[6]" is stuck at GND
+    Warning (13410): Pin "accel_data[7]" is stuck at GND
+    Warning (13410): Pin "accel_data[8]" is stuck at GND
+    Warning (13410): Pin "accel_data[9]" is stuck at GND
+    Warning (13410): Pin "accel_data[10]" is stuck at GND
+    Warning (13410): Pin "accel_data[11]" is stuck at GND
+    Warning (13410): Pin "accel_data[12]" is stuck at GND
+    Warning (13410): Pin "accel_data[13]" is stuck at GND
+    Warning (13410): Pin "accel_data[14]" is stuck at GND
+    Warning (13410): Pin "accel_data[15]" is stuck at GND
+Info (17049): 3 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 283 device resources after synthesis - the final resource count might be different
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "ask_for_position"
+Info (21057): Implemented 189 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 16 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 262 logic cells
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 397 megabytes
-    Info: Processing ended: Sun Apr 23 16:16:32 2023
-    Info: Elapsed time: 00:00:01
+    Info (21061): Implemented 168 logic cells
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 21 warnings
+    Info: Peak virtual memory: 405 megabytes
+    Info: Processing ended: Sun Apr 23 19:53:02 2023
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
 

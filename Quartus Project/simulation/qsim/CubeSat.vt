@@ -18,7 +18,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "04/23/2023 16:18:08"
+// Generated on "04/23/2023 19:44:36"
                                                                         
 // Verilog Self-Checking Test Bench (with test vectors) for design :    accelerometer
 // 
@@ -507,8 +507,8 @@ end
 // reset
 initial
 begin
-	reset = 1'b1;
-	reset = #100000 1'b0;
+	reset = 1'b0;
+	reset = #30000 1'b1;
 end 
 
 // ask_for_position

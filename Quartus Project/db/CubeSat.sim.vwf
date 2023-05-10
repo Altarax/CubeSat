@@ -495,8 +495,8 @@ TRANSITION_LIST("reset")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 100.0;
-		LEVEL 0 FOR 900.0;
+		LEVEL 0 FOR 30.0;
+		LEVEL 1 FOR 970.0;
 	}
 }
 
@@ -523,8 +523,7 @@ TRANSITION_LIST("current_state.init")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 250.0;
-		LEVEL 0 FOR 750.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -533,8 +532,7 @@ TRANSITION_LIST("current_state.send_config_t")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 250.0;
-		LEVEL 1 FOR 750.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 

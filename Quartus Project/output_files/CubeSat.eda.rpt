@@ -1,5 +1,5 @@
 EDA Netlist Writer report for CubeSat
-Sun Apr 23 16:18:09 2023
+Sun Apr 23 19:53:09 2023
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Sun Apr 23 16:18:09 2023 ;
+; EDA Netlist Writer Status ; Successful - Sun Apr 23 19:53:09 2023 ;
 ; Revision Name             ; CubeSat                               ;
 ; Top-level Entity Name     ; accelerometer                         ;
 ; Family                    ; Cyclone II                            ;
@@ -80,13 +80,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 32-bit EDA Netlist Writer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Apr 23 16:18:08 2023
-Info: Command: quartus_eda --functional=on --simulation=on --tool=modelsim_oem --format=verilog CubeSat -c CubeSat
+    Info: Processing started: Sun Apr 23 19:53:09 2023
+Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off CubeSat -c CubeSat
 Info (204019): Generated file CubeSat.vo in folder "C:/Users/jaysb/Desktop/Projets/CESI/Cours/CubeSat/Quartus Project/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 32-bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 330 megabytes
-    Info: Processing ended: Sun Apr 23 16:18:09 2023
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 334 megabytes
+    Info: Processing ended: Sun Apr 23 19:53:09 2023
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00
 
 

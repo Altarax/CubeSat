@@ -72,7 +72,7 @@ VCCIO1                       : 5         : power  :                   : 3.3V    
 GND                          : 6         : gnd    :                   :         :           :                
 GND*                         : 7         :        :                   :         : 1         :                
 GND*                         : 8         :        :                   :         : 1         :                
-GND*                         : 9         :        :                   :         : 1         :                
+accel_data[4]                : 9         : output : 3.3-V LVTTL       :         : 1         : N              
 TDO                          : 10        : output :                   :         : 1         :                
 TMS                          : 11        : input  :                   :         : 1         :                
 TCK                          : 12        : input  :                   :         : 1         :                
@@ -106,29 +106,29 @@ GND                          : 39        : gnd    :                   :         
 GND*                         : 40        :        :                   :         : 4         :                
 GND*                         : 41        :        :                   :         : 4         :                
 GND*                         : 42        :        :                   :         : 4         :                
-GND*                         : 43        :        :                   :         : 4         :                
-GND*                         : 44        :        :                   :         : 4         :                
-GND*                         : 45        :        :                   :         : 4         :                
+accel_data[15]               : 43        : output : 3.3-V LVTTL       :         : 4         : N              
+accel_data[12]               : 44        : output : 3.3-V LVTTL       :         : 4         : N              
+accel_data[9]                : 45        : output : 3.3-V LVTTL       :         : 4         : N              
 VCCIO4                       : 46        : power  :                   : 3.3V    : 4         :                
-accel_data[1]                : 47        : output : 3.3-V LVTTL       :         : 4         : N              
+accel_data[3]                : 47        : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : 48        :        :                   :         : 4         :                
 GND                          : 49        : gnd    :                   :         :           :                
 VCCINT                       : 50        : power  :                   : 1.2V    :           :                
-accel_data[4]                : 51        : output : 3.3-V LVTTL       :         : 4         : N              
-accel_data[3]                : 52        : output : 3.3-V LVTTL       :         : 4         : N              
-accel_data[8]                : 53        : output : 3.3-V LVTTL       :         : 4         : N              
+accel_data[14]               : 51        : output : 3.3-V LVTTL       :         : 4         : N              
+accel_data[2]                : 52        : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : 53        :        :                   :         : 4         :                
 VCCIO4                       : 54        : power  :                   : 3.3V    : 4         :                
-i2c_scl                      : 55        : bidir  : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : 55        :        :                   :         : 4         :                
 GND                          : 56        : gnd    :                   :         :           :                
-accel_data[9]                : 57        : output : 3.3-V LVTTL       :         : 4         : N              
-accel_data[6]                : 58        : output : 3.3-V LVTTL       :         : 4         : N              
-accel_data[10]               : 59        : output : 3.3-V LVTTL       :         : 4         : N              
-accel_data[14]               : 60        : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : 57        :        :                   :         : 4         :                
+GND*                         : 58        :        :                   :         : 4         :                
+accel_data[5]                : 59        : output : 3.3-V LVTTL       :         : 4         : N              
+accel_data[11]               : 60        : output : 3.3-V LVTTL       :         : 4         : N              
 GND                          : 61        : gnd    :                   :         :           :                
 VCCINT                       : 62        : power  :                   : 1.2V    :           :                
-accel_data[11]               : 63        : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : 63        :        :                   :         : 4         :                
 GND*                         : 64        :        :                   :         : 4         :                
-accel_data[15]               : 65        : output : 3.3-V LVTTL       :         : 4         : N              
+accel_data[6]                : 65        : output : 3.3-V LVTTL       :         : 4         : N              
 VCCIO4                       : 66        : power  :                   : 3.3V    : 4         :                
 GND*                         : 67        :        :                   :         : 4         :                
 GND                          : 68        : gnd    :                   :         :           :                
@@ -167,7 +167,7 @@ GND*                         : 100       :        :                   :         
 GND*                         : 101       :        :                   :         : 3         :                
 VCCIO3                       : 102       : power  :                   : 3.3V    : 3         :                
 GND*                         : 103       :        :                   :         : 3         :                
-GND*                         : 104       :        :                   :         : 3         :                
+accel_data[7]                : 104       : output : 3.3-V LVTTL       :         : 3         : N              
 GND                          : 105       : gnd    :                   :         :           :                
 GND_PLL2                     : 106       : gnd    :                   :         :           :                
 VCCD_PLL2                    : 107       : power  :                   : 1.2V    :           :                
@@ -175,36 +175,36 @@ GND_PLL2                     : 108       : gnd    :                   :         
 VCCA_PLL2                    : 109       : power  :                   : 1.2V    :           :                
 GNDA_PLL2                    : 110       : gnd    :                   :         :           :                
 GND                          : 111       : gnd    :                   :         :           :                
-GND*                         : 112       :        :                   :         : 2         :                
-GND*                         : 113       :        :                   :         : 2         :                
+accel_data[1]                : 112       : output : 3.3-V LVTTL       :         : 2         : N              
+accel_data[8]                : 113       : output : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 114       :        :                   :         : 2         :                
 GND*                         : 115       :        :                   :         : 2         :                
 VCCIO2                       : 116       : power  :                   : 3.3V    : 2         :                
 GND                          : 117       : gnd    :                   :         :           :                
 GND*                         : 118       :        :                   :         : 2         :                
 GND*                         : 119       :        :                   :         : 2         :                
-accel_data[13]               : 120       : output : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : 121       :        :                   :         : 2         :                
+GND*                         : 120       :        :                   :         : 2         :                
+accel_data[0]                : 121       : output : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 122       :        :                   :         : 2         :                
 GND                          : 123       : gnd    :                   :         :           :                
 VCCINT                       : 124       : power  :                   : 1.2V    :           :                
-accel_data[12]               : 125       : output : 3.3-V LVTTL       :         : 2         : N              
-accel_data[0]                : 126       : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 125       :        :                   :         : 2         :                
+GND*                         : 126       :        :                   :         : 2         :                
 VCCIO2                       : 127       : power  :                   : 3.3V    : 2         :                
 GND                          : 128       : gnd    :                   :         :           :                
-accel_data[5]                : 129       : output : 3.3-V LVTTL       :         : 2         : N              
+accel_data[13]               : 129       : output : 3.3-V LVTTL       :         : 2         : N              
 GND                          : 130       : gnd    :                   :         :           :                
 VCCINT                       : 131       : power  :                   : 1.2V    :           :                
-i2c_sda                      : 132       : bidir  : 3.3-V LVTTL       :         : 2         : N              
-accel_data[2]                : 133       : output : 3.3-V LVTTL       :         : 2         : N              
-accel_data[7]                : 134       : output : 3.3-V LVTTL       :         : 2         : N              
+i2c_scl                      : 132       : bidir  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 133       :        :                   :         : 2         :                
+i2c_sda                      : 134       : bidir  : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 135       :        :                   :         : 2         :                
 GND*                         : 136       :        :                   :         : 2         :                
 GND*                         : 137       :        :                   :         : 2         :                
 VCCIO2                       : 138       : power  :                   : 3.3V    : 2         :                
 GND*                         : 139       :        :                   :         : 2         :                
 GND                          : 140       : gnd    :                   :         :           :                
-GND*                         : 141       :        :                   :         : 2         :                
+accel_data[10]               : 141       : output : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 142       :        :                   :         : 2         :                
 GND*                         : 143       :        :                   :         : 2         :                
 GND*                         : 144       :        :                   :         : 2         :                
