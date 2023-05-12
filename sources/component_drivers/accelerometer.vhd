@@ -8,7 +8,7 @@ entity accelerometer is
         reset               : in std_logic;
         
         ask_for_position    : in std_logic;
-        accel_data          : out std_logic_vector(15 downto 0);
+        accel_data          : inout std_logic_vector(15 downto 0);
         
         -- I2C interface
         i2c_ena      : out std_logic := '0';
@@ -114,18 +114,18 @@ begin
                         when 2 =>
                             i2c_rw <= I2C_WRITE_c;
                             i2c_data_wr <= X"3C";
-                            if (i2c_busy = '0') then                    
+                            if (i2c_busy = '0') then
                                 accel_data_s(15 downto 8) <= i2c_data_rd;
                             end if;
                         when 3 =>
                             i2c_rw <= I2C_READ_c;
                         when 4 =>
-                            i2c_ena <= '0';                       
-                            if (i2c_busy = '0') then                    
+                            i2c_ena <= '0';
+                            if (i2c_busy = '0') then
                                 accel_data_s(7 downto 0) <= i2c_data_rd;  
                                 busy_count := 0;
-                                get_data_done <= '1';                       
-                                current_state <= init;         
+                                get_data_done <= '1';
+                                current_state <= init; 
                             end if;
 
                         when others => NULL;
@@ -138,6 +138,6 @@ begin
 
     end process;
 
-    accel_data <= accel_data_s when get_data_done = '1' else (others => '0');
+    accel_data <= accel_data_s when get_data_done = '1' else accel_data;
 
 end architecture;

@@ -9,7 +9,7 @@ entity altimeter is
         reset               : in std_logic;
         
         ask_for_pressure    : in std_logic;
-        altitude_data       : out integer;
+        altitude            : inout integer;
         
         -- SPI interface
         clk             : in      std_logic;
@@ -181,7 +181,7 @@ begin
                     
     end process;
 
-    altitude_data   <= 44330.0 * (1.0 - real'pow(to_integer(unsigned(raw_data)/101325, 0.1903)))
-                    when get_data_done = '1' else 0;
+    altitude   <= 44330.0 * (1.0 - real'pow(to_integer(unsigned(raw_data)/101325, 0.1903)))
+                    when get_data_done = '1' else altitude;
 
 end architecture;
