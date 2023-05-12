@@ -23,12 +23,17 @@ def get_ports_from_entity(file) -> list:
             
             p_name = name_type[0].strip()
             p_type = name_type[1].strip()
-            ports.append(f'{p_name} {p_type.replace("out", "").replace("in", "", 1).replace("buffer", "").replace("inout", "")}')
+            
+            word_to_remove = ["out", "in", "buffer", "inout"]
+            for i in word_to_remove:
+                p_type = p_type.replace(i, "")
+            
+            ports.append(f'{p_name} {p_type}')
             
         return ports
 
 
-def create_tb() -> None:
+def generate_tb_files() -> None:
     for filename in os.listdir(COMPONENTS_DRIVERS_FOLDER):
         if filename.endswith(".vhd"):
 
@@ -63,6 +68,7 @@ def create_tb() -> None:
                     lines.insert(index_of_architecture, f"\tsignal {port.split(None, 1)[0]}_s : {port.split(None, 1)[-1]};\n")
                     index_of_architecture = index_of_architecture + 1
                 lines.insert(index_of_architecture, "\n")
+                
                 with open(tb_file.name, "w") as tb:
                     lines = "".join(lines)
                     tb.write(lines)
@@ -76,7 +82,7 @@ def create_tb() -> None:
                             index_of_UUT = i+1
                             tb.close()
                             break
-                
+
                 lines.insert(index_of_UUT, "\t\tport map (\n")
                 index_of_UUT = index_of_UUT+1
                 for i, port in enumerate(ports):
@@ -86,14 +92,14 @@ def create_tb() -> None:
                         lines.insert(index_of_UUT, f"\t\t\t{port.split(None, 1)[0]} => {port.split(None, 1)[0]}_s\n")
                         index_of_UUT = index_of_UUT+1
                 lines.insert(index_of_UUT, "\t\t);\n")
+                
                 with open(tb_file.name, "w") as tb:
                     lines = "".join(lines)
                     tb.write(lines)
                     tb.close
-                    
+
 
 if __name__ == "__main__":
     print("Generating testbench files...")
-    create_tb()
+    generate_tb_files()
     print("Done!")
-

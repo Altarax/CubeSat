@@ -27,7 +27,7 @@ architecture simulation of altimeter_tb is
 	signal clk_50Mhz_s : std_logic;
 	signal reset_s : std_logic;
 	signal ask_for_pressure_s : std_logic;
-	signal altitude_s : integer;
+	signal altitude_s : teger;
 	signal spi_cont_s : std_logic;
 	signal spi_rx_data_s : std_logic;
 	signal spi_ena_s : std_logic;
