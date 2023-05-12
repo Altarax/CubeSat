@@ -11,7 +11,7 @@ entity accelerometer is
         accel_data          : inout std_logic_vector(15 downto 0);
         
         -- I2C interface
-        i2c_ena      : out std_logic := '0';
+        i2c_ena      : out std_logic;
         i2c_busy     : in std_logic;
         i2c_rw       : out std_logic;
         i2c_data_wr  : out std_logic_vector(7 downto 0);

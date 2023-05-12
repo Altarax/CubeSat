@@ -12,19 +12,18 @@ entity altimeter is
         altitude            : inout integer;
         
         -- SPI interface
-        clk             : in      std_logic;
-        reset_n         : in      std_logic;
-        miso            : in      std_logic;
-        sclk            : buffer  std_logic;
-        cs              : buffer  std_logic_vector(0 downto 0);
-        mosi            : out     std_logic
+        spi_cont            : out     std_logic;    
+        spi_rx_data         : in      std_logic;
+        spi_ena             : buffer  std_logic;
+        spi_busy            : in      std_logic;
+        spi_tx_data         : out     std_logic
     );
 end entity;
 
 architecture rtl of altimeter is
 
     -- Constants
-    constant SLAVE_ADDR_c   : std_logic_vector(7 downto 0) := X"00"; -- TBD
+    constant SLAVE_ADDR_c   : std_logic_vector(7 downto 0) := X"00";
     constant DATA_CONFIG    : std_logic_vector(7 downto 0) := X"00";
     constant COMPENSATE_REG_DATA_c  : std_logic_vector(7 downto 0) := X"8E";
     constant REG_DATA_ADDR_c        : std_logic_vector(7 downto 0) := X"FA";
@@ -36,11 +35,6 @@ architecture rtl of altimeter is
 
     -- SPI Signals
     SIGNAL spi_busy_prev      : std_logic;
-    SIGNAL spi_busy           : std_logic;
-    SIGNAL spi_ena            : std_logic;
-    SIGNAL spi_cont           : std_logic;
-    SIGNAL spi_tx_data        : std_logic_vector(7 downto 0);
-    SIGNAL spi_rx_data        : std_logic_vector(7 downto 0);
 
     -- Signals
     signal get_pressure     : std_logic := '0';
