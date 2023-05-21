@@ -11,6 +11,7 @@ def get_ports_from_entity(file) -> list:
             return []
         
         port_str = entity_str.split("port (")[1].split(" );")[0].split("\n")
+
         ports = []
         for p in port_str:
             p = p.strip().replace(";", "").replace(",", "")

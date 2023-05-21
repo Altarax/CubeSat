@@ -13,10 +13,10 @@ entity altimeter is
         
         -- SPI interface
         spi_cont            : out     std_logic;    
-        spi_rx_data         : in      std_logic;
+        spi_rx_data         : in      std_logic_vector(7 downto 0);
         spi_ena             : buffer  std_logic;
         spi_busy            : in      std_logic;
-        spi_tx_data         : out     std_logic
+        spi_tx_data         : out     std_logic_vector(7 downto 0)
     );
 end entity;
 
