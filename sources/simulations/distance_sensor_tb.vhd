@@ -40,7 +40,6 @@ begin
 			ask_for_distance => ask_for_distance_s,
 			distance => distance_s,
 			echo => echo_s,
-			trigger => trigger_s,
 			trigger => trigger_s
 		);
 

@@ -48,7 +48,6 @@ begin
 			i2c_rw => i2c_rw_s,
 			i2c_data_wr => i2c_data_wr_s,
 			i2c_data_rd => i2c_data_rd_s,
-			i2c_addr => i2c_addr_s,
 			i2c_addr => i2c_addr_s
 		);
 

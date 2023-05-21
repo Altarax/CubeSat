@@ -1,4 +1,4 @@
-import os
+import os, re
 from datetime import date
 
 COMPONENTS_DRIVERS_FOLDER = "sources/component_drivers"
@@ -25,9 +25,10 @@ def get_ports_from_entity(file) -> list:
             p_name = name_type[0].strip()
             p_type = name_type[1].strip()
             
-            word_to_remove = ["out", "in", "buffer", "inout"]
+            word_to_remove = ["out", "buffer", "inout"]
             for i in word_to_remove:
                 p_type = p_type.replace(i, "")
+            p_type = re.sub(r'\b(in)\b(?![\w-])', '', p_type)
             
             ports.append(f'{p_name} {p_type}')
             
@@ -90,8 +91,10 @@ def generate_tb_files() -> None:
                     lines.insert(index_of_UUT, f"\t\t\t{port.split(None, 1)[0]} => {port.split(None, 1)[0]}_s,\n")
                     index_of_UUT = index_of_UUT+1
                     if i == len(ports)-1:
+                        lines[index_of_UUT-1] = ""
                         lines.insert(index_of_UUT, f"\t\t\t{port.split(None, 1)[0]} => {port.split(None, 1)[0]}_s\n")
                         index_of_UUT = index_of_UUT+1
+                        break
                 lines.insert(index_of_UUT, "\t\t);\n")
                 
                 with open(tb_file.name, "w") as tb:
