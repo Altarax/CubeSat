@@ -24,32 +24,20 @@ end accelerometer_tb;
 
 architecture simulation of accelerometer_tb is
     
-	signal clk_50Mhz_s : std_logic;
-	signal reset_s : std_logic;
-	signal ask_for_position_s : std_logic;
-	signal accel_data_s : std_logic_vector(15 downto 0);
-	signal i2c_ena_s : std_logic;
-	signal i2c_busy_s : std_logic;
-	signal i2c_rw_s : std_logic;
-	signal i2c_data_wr_s : std_logic_vector(7 downto 0);
-	signal i2c_data_rd_s : std_logic_vector(7 downto 0);
-	signal i2c_addr_s : std_logic_vector(6 downto 0);
+    signal clk_50Mhz_s: std_logic;
+    signal reset_s: std_logic;
+    signal ask_for_position_s: std_logic;
+    signal accel_data_s: std_logic_vector(15 downto 0);
+    signal i2c_ena_s: std_logic;
+    signal i2c_busy_s: std_logic;
+    signal i2c_rw_s: std_logic;
+    signal i2c_data_wr_s: std_logic_vector(7 downto 0);
+    signal i2c_data_rd_s: std_logic_vector(7 downto 0);
+    signal i2c_addr_s: std_logic_vector(6 downto 0);
 
 begin
     
     UUT: entity work.accelerometer
-		port map (
-			clk_50Mhz => clk_50Mhz_s,
-			reset => reset_s,
-			ask_for_position => ask_for_position_s,
-			accel_data => accel_data_s,
-			i2c_ena => i2c_ena_s,
-			i2c_busy => i2c_busy_s,
-			i2c_rw => i2c_rw_s,
-			i2c_data_wr => i2c_data_wr_s,
-			i2c_data_rd => i2c_data_rd_s,
-			i2c_addr => i2c_addr_s
-		);
 
     reset_gen: process
         begin

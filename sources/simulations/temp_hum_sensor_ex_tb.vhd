@@ -28,8 +28,6 @@ architecture simulation of temp_hum_sensor_ex_tb is
 begin
     
     UUT: entity work.temp_hum_sensor_ex
-		port map (
-		);
 
     reset_gen: process
         begin

@@ -28,8 +28,6 @@ architecture simulation of receiver_435_tb is
 begin
     
     UUT: entity work.receiver_435
-		port map (
-		);
 
     reset_gen: process
         begin
