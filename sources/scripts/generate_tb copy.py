@@ -52,6 +52,7 @@ def generate_tb_files() -> None:
                 arch_content = arch_content[:reset_gen_index] + "\t" + generate_uut(port_names, generic_names) \
                                + "\t" + arch_content[reset_gen_index:]
 
+                print("Writing testbench file: " + tb_file + " ... OK\n")
                 with open(tb_file, "w") as tb:
                     tb.write(arch_content)
 
@@ -63,5 +64,5 @@ if __name__ == "__main__":
     print("Generating testbench files...")
     print("====================================\n")
     generate_tb_files()
-    print("\n====================================")
+    print("====================================")
     print("Done!")

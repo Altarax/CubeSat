@@ -1,6 +1,18 @@
 import re
 
 def parse_vhdl_section(content, start_keyword, end_keyword) -> str:
+    """
+    Parses a VHDL section within the content based on the start and end keywords.
+
+    Args:
+        content (list): List of lines containing the VHDL content.
+        start_keyword (str): Start keyword marking the beginning of the section.
+        end_keyword (str): End keyword marking the end of the section.
+
+    Returns:
+        str: Parsed content section.
+
+    """
     start_index = None
     end_index = None
 
@@ -22,7 +34,18 @@ def parse_vhdl_section(content, start_keyword, end_keyword) -> str:
     else:
         return None
 
+
 def extract_port_names_and_types(port_list):
+    """
+    Extracts port names and types from a list of port declarations.
+
+    Args:
+        port_list (list): List of port declarations.
+
+    Returns:
+        tuple: Two lists containing the extracted port names and types, respectively.
+
+    """
     port_names = []
     port_types = []
 
@@ -44,6 +67,16 @@ def extract_port_names_and_types(port_list):
 
 
 def extract_generic_names_and_types(generic_list):
+    """
+    Extracts generic names and types from a list of generic declarations.
+
+    Args:
+        generic_list (list): List of generic declarations.
+
+    Returns:
+        tuple: Two lists containing the extracted generic names and types, respectively.
+
+    """
     generic_names = []
     generic_types = []
 
