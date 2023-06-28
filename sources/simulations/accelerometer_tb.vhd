@@ -38,7 +38,19 @@ architecture simulation of accelerometer_tb is
 begin
     
     UUT: entity work.accelerometer
-
+	       port map (
+          clk_50Mhz => clk_50Mhz_s,
+          reset => reset_s,
+          ask_for_position => ask_for_position_s,
+          accel_data => accel_data_s,
+          i2c_ena => i2c_ena_s,
+          i2c_busy => i2c_busy_s,
+          i2c_rw => i2c_rw_s,
+          i2c_data_wr => i2c_data_wr_s,
+          i2c_data_rd => i2c_data_rd_s,
+          i2c_addr => i2c_addr_s
+       );
+	
     reset_gen: process
         begin
         end process;

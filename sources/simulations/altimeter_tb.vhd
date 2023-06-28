@@ -37,7 +37,18 @@ architecture simulation of altimeter_tb is
 begin
     
     UUT: entity work.altimeter
-
+	       port map (
+          clk_50Mhz => clk_50Mhz_s,
+          reset => reset_s,
+          ask_for_pressure => ask_for_pressure_s,
+          altitude => altitude_s,
+          spi_cont => spi_cont_s,
+          spi_rx_data => spi_rx_data_s,
+          spi_ena => spi_ena_s,
+          spi_busy => spi_busy_s,
+          spi_tx_data => spi_tx_data_s
+       );
+	
     reset_gen: process
         begin
         end process;

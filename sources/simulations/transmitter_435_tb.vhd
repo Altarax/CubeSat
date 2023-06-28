@@ -25,10 +25,13 @@ end transmitter_435_tb;
 architecture simulation of transmitter_435_tb is
     
 
+
 begin
     
     UUT: entity work.transmitter_435
-
+	       port map (
+       );
+	
     reset_gen: process
         begin
         end process;

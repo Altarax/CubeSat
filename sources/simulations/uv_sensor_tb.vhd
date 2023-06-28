@@ -25,10 +25,13 @@ end uv_sensor_tb;
 architecture simulation of uv_sensor_tb is
     
 
+
 begin
     
     UUT: entity work.uv_sensor
-
+	       port map (
+       );
+	
     reset_gen: process
         begin
         end process;

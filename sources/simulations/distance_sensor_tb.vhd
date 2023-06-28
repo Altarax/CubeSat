@@ -24,11 +24,30 @@ end distance_sensor_tb;
 
 architecture simulation of distance_sensor_tb is
     
+    constant FREQ_c : integer := <valeur>;
+
+    signal clk_in_s: std_logic;
+    signal reset_s: std_logic;
+    signal ask_for_distance_s: std_logic;
+    signal distance_s: real;
+    signal echo_s: std_logic;
+    signal trigger_s: std_logic;
 
 begin
     
     UUT: entity work.distance_sensor
-
+	   generic map (
+          FREQ => FREQ_c
+       )
+       port map (
+          clk_in => clk_in_s,
+          reset => reset_s,
+          ask_for_distance => ask_for_distance_s,
+          distance => distance_s,
+          echo => echo_s,
+          trigger => trigger_s
+       );
+	
     reset_gen: process
         begin
         end process;

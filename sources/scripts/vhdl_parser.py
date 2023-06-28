@@ -2,16 +2,22 @@ import re
 
 def parse_vhdl_section(content, start_keyword, end_keyword) -> str:
     start_index = None
-    end_index = []
+    end_index = None
+
+    start_found = False
+    end_found = False
 
     for i, line in enumerate(content):
-        if line.strip().startswith(start_keyword):
+        if not start_found and line.strip().startswith(start_keyword):
             start_index = i + 1
-        elif line.strip().startswith(end_keyword):
-            end_index.append(i)
+            start_found = True
+        elif start_found and line.strip().startswith(end_keyword):
+            end_index = i
+            end_found = True
+            break
 
-    if start_index is not None and end_index is not None:
-        parsed_content = content[start_index:end_index[0]]
+    if start_found and end_found:
+        parsed_content = content[start_index:end_index]
         return parsed_content
     else:
         return None
