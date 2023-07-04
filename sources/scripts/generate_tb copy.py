@@ -5,8 +5,6 @@ from vhdl_generator import generate_signals, generate_constants, generate_uut
 COMPONENTS_DRIVERS_FOLDER = "sources/component_drivers"
 TESTBENCH_TEMPLATE_FILE = "sources/simulations/template_tb.vhd"
 
-START_KEYWORD_PORT = "entity"
-
 def generate_tb_files() -> None:
     for filename in os.listdir(COMPONENTS_DRIVERS_FOLDER):
         if filename.endswith(".vhd"):

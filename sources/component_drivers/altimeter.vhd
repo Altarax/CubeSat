@@ -9,7 +9,7 @@ entity altimeter is
         reset               : in std_logic;
         
         ask_for_pressure    : in std_logic;
-        altitude            : inout integer;
+        altitude            : inout real;
         
         -- SPI interface
         spi_cont            : out     std_logic;    
