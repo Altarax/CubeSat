@@ -55,10 +55,12 @@ def generate_tb_files() -> None:
                 print("Writing testbench file: " + tb_file + " ... OK\n")
                 with open(tb_file, "w") as tb:
                     tb.write(arch_content)
+                    tb.close()
 
             except Exception as e:
                 print("Error parsing entity from file: " + vhdl_file)
                 print(str(e))
+
 
 if __name__ == "__main__":
     print("Generating testbench files...")
