@@ -104,7 +104,7 @@ begin
                     end if;
 
                     case busy_count is
-                        when 0 =>
+                        when 0 => 
                             i2c_ena <= '1';
                             i2c_addr <= SLAVE_ADDR_c;
                             i2c_rw <= I2C_WRITE_c;

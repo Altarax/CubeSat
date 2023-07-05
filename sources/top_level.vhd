@@ -48,7 +48,7 @@ architecture rtl of top_level is
 
     -- Altimeter sensor
     signal ask_for_pressure_s : std_logic := '0';
-    signal altitude_s         : integer := 0;
+    signal altitude_s         : real := 0;
 
     -- Distance sensor
     signal ask_for_distance_s : std_logic := '0';
