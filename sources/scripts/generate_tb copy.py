@@ -57,6 +57,7 @@ def generate_tb_files() -> None:
 
             except Exception as e:
                 print("Error parsing entity from file: " + vhdl_file)
+                print("Line: ", e.__traceback__.tb_lineno)
                 print(str(e))
 
 
