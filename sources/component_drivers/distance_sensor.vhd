@@ -34,7 +34,7 @@ begin
             report "FREQ must be at least 10 MHz" severity failure;
         else
             max_trigger <= 10/((1/FREQ)*10.0E6);
-        end if;    
+        end if;     
     end process;
 
     hc_sr04_gen:process(clk_in, reset)
@@ -49,6 +49,8 @@ begin
 
             case current_state is
                 when init_t =>
+                    counter_echo <= 0;
+                    distance <= (others => '0');
                     if ask_for_distance = '1' then
                         current_state <= trigger_t;
                     end if;

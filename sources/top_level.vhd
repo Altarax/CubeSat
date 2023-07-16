@@ -20,7 +20,6 @@ entity top_level is
         -- Distance sensor
         echo                : inout std_logic;
         trigger             : inout std_logic
-
     );
 end entity;
 
