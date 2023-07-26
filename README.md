@@ -22,7 +22,7 @@ I took the liberty to increase the size by 50%. So today it looks like this :
 
 ## Schematics
 So, for this project I need to create my own PCB. With the help of my colleague, we created it using Easy EDA.
-Of course I'll buy it from JLPCB.  
+I'll buy it from JLPCB. I changed the initial FPGA by the Development Kit Cmod S7. 
 <p align="center"><img src="/images/pcb.png" width="500" height="500"></p>
 
 ## Quartus project
