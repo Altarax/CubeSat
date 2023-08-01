@@ -35,7 +35,7 @@ To copy : ✔️ ❌
 [❌] - Ultrasonic sensor  
 [❌] - Receiver  
 [❌] - Transmitter  
-[❌] - UV sensor  
+[✔️] - UV sensor  
 [❌] - Extern T°/Hum sensor  
 [❌] - Intern T°/Hum sensor  
 [❌] - One Wire  
