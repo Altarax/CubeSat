@@ -30,7 +30,7 @@ begin
         variable waiting_count : integer range 0 to 3 := 0;
         variable read_count : integer range 0 to 9 := 0;
     begin
-        if (reset = '0') then
+        if (reset = '1') then
 
             spi_cs <= '1';
             get_data_done <= '0';
