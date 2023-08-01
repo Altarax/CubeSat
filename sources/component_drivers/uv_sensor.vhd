@@ -43,7 +43,6 @@ begin
 
                 when init =>
                     get_data_done <= '0';
-                    spi_sck <= '1';
                     if ask_for_uv = '1' then
                         current_state <= waiting_t;
                     end if;
