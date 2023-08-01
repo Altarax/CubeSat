@@ -62,6 +62,7 @@ begin
                         read_count := 0;
                         current_state <= stop_t;
                     else
+                        read_count := read_count + 1;
                         uv_data_s <= uv_data_s(7 downto 0) & spi_data;
                     end if;
 
