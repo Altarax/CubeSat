@@ -175,7 +175,7 @@ begin
                     
     end process;
 
-    altitude   <= 44330.0 * (1.0 - real'pow(to_integer(unsigned(raw_data)/101325, 0.1903)))
+    altitude   <= 44330.0 * (1.0-(to_integer(unsigned(raw_data)/101325) ** 0.1903))
                     when get_data_done = '1' else altitude;
 
 end architecture;
