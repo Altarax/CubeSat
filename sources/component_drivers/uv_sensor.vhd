@@ -34,7 +34,7 @@ begin
 
             spi_cs <= '1';
             get_data_done <= '0';
-            uv_data <= (others => '0');
+            uv_data_s <= (others => '0');
             current_state <= init;
 
         elsif rising_edge(clk_50Mhz) then
