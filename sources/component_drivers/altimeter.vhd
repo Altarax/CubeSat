@@ -151,11 +151,11 @@ begin
                         when 1 =>
                             raw_data(19 downto 12) <= spi_rx_data;
                         when 2 =>
-                            raw_data(11 downto 4) <= spi_rx_data;
+                            raw_data(11 downto 4) <= spi_rx_data;   
                         when 7 =>
                             temp := spi_rx_data;
                         when 8 =>
-                            raw_data(3 downto 0) <= temp(7 downto 5);
+                            raw_data(3 downto 0 ) <= '0' & temp(7 downto 5);
                             busy_count := 0;
                             spi_cont <= '0';
                             spi_ena <= '0';
@@ -175,7 +175,7 @@ begin
                     
     end process;
 
-    altitude   <= 44330.0 * (1.0-(to_integer(unsigned(raw_data)/101325) ** 0.1903))
-                    when get_data_done = '1' else altitude;
-
+    -- Lookup table for Altitude
+    altitude <= 0.0 when get_data_done = '1' else altitude;
+    
 end architecture;

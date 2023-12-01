@@ -24,7 +24,7 @@ end distance_sensor_tb;
 
 architecture simulation of distance_sensor_tb is
     
-    constant FREQ_c : integer := <value>;
+    constant FREQ_c : integer := 50;
 
     signal clk_in_s: std_logic;
     signal reset_s: std_logic;

@@ -13,8 +13,8 @@ entity top_level is
 
         -- SPI interface
         miso                : inout std_logic;
-        sclk                : inout std_logic;
-        ss_n                : inout std_logic_vector(3 downto 0);
+        sclk                : buffer std_logic;
+        ss_n                : buffer std_logic_vector(3 downto 0);
         mosi                : inout std_logic;
 
         -- Distance sensor
@@ -36,10 +36,10 @@ architecture rtl of top_level is
 
     -- SPI interface
     signal spi_cont     : std_logic := '0';
-    signal spi_rx_data  : std_logic_vector(7 downto 0) := (others => '0');
+    signal spi_rx_data  : std_logic_vector(1 downto 0) := (others => '0');
     signal spi_ena      : std_logic := '0';
     signal spi_busy     : std_logic := '0';
-    signal spi_tx_data  : std_logic_vector(7 downto 0) := (others => '0');
+    signal spi_tx_data  : std_logic_vector(1 downto 0) := (others => '0');
 
     -- Accelerometer
     signal ask_for_position_s : std_logic := '0';
@@ -47,11 +47,11 @@ architecture rtl of top_level is
 
     -- Altimeter sensor
     signal ask_for_pressure_s : std_logic := '0';
-    signal altitude_s         : real := 0;
+    signal altitude_s         : real := 0.0;
 
     -- Distance sensor
     signal ask_for_distance_s : std_logic := '0';
-    signal distance_s         : real := 0;
+    signal distance_s         : real := 0.0;
     
 begin
 
