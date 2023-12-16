@@ -31,8 +31,8 @@ USE ieee.std_logic_unsigned.all;
 
 ENTITY spi_master IS
   GENERIC(
-    slaves  : INTEGER := 4;  --number of spi slaves
-    d_width : INTEGER := 2); --data bus width
+    slaves  : INTEGER := 1;  --number of spi slaves
+    d_width : INTEGER := 8); --data bus width
   PORT(
     clock   : IN     STD_LOGIC;                             --system clock
     reset_n : IN     STD_LOGIC;                             --asynchronous reset

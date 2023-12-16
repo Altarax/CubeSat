@@ -9,7 +9,7 @@ entity altimeter is
         reset               : in std_logic;
         
         ask_for_pressure    : in std_logic;
-        altitude            : inout real;
+        altitude            : inout integer;
         
         -- SPI interface
         spi_cont            : out     std_logic;    
@@ -175,7 +175,7 @@ begin
                     
     end process;
 
-    -- Lookup table for Altitude
-    altitude <= 0.0 when get_data_done = '1' else altitude;
+    -- TODO : Lookup table for Altitude
+    altitude <= 0 when get_data_done = '1' else altitude;
     
 end architecture;

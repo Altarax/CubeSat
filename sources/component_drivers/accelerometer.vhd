@@ -45,7 +45,7 @@ architecture rtl of accelerometer is
 
 begin
     
-    fsm: process(clk_50Mhz, reset)
+    mpu_6050_gen: process(clk_50Mhz, reset)
         variable busy_count : integer := 0;
     begin
 
