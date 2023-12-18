@@ -20,15 +20,16 @@ end entity;
 architecture rtl of uv_sensor is
 
     type state_t is (init, waiting_t, read_t, stop_t);
-    signal current_state : state_t := init;
+    signal current_state    : state_t := init;
 
-    signal uv_data_s : std_logic_vector(8 downto 0) := (others => '0');
-    signal get_data_done : std_logic := '0';
+    signal uv_data_s        : std_logic_vector(8 downto 0) := (others => '0');
+    signal get_data_done    : std_logic := '0';
 
 begin
-    process(clk_50Mhz, reset)
-        variable waiting_count : integer range 0 to 3 := 0;
-        variable read_count : integer range 0 to 9 := 0;
+
+    process(clk_50Mhz, reset, ask_for_uv)
+        variable waiting_count  : integer range 0 to 3 := 0;
+        variable read_count     : integer range 0 to 9 := 0;
     begin
         if (reset = '1') then
 

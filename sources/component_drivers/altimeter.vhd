@@ -46,7 +46,7 @@ architecture rtl of altimeter is
     
 begin
 
-    fsm: process(clk_50Mhz, reset)
+    fsm: process(clk_50Mhz, reset, ask_for_pressure, spi_busy_prev, spi_busy)
         variable busy_count : integer := 0;
         variable temp : std_logic_vector(7 downto 0);
     begin

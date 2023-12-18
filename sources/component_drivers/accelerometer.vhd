@@ -22,7 +22,7 @@ end entity;
 
 architecture rtl of accelerometer is
 
-    -- TODO : this in a package
+    -- TODO : this could be in a package
     constant I2C_WRITE_c   : std_logic := '0';
     constant I2C_READ_c    : std_logic := '1';
 
@@ -45,7 +45,7 @@ architecture rtl of accelerometer is
 
 begin
     
-    mpu_6050_gen: process(clk_50Mhz, reset)
+    mpu_6050_gen: process(clk_50Mhz, reset, get_data_done, ask_for_position, busy_prev, i2c_busy)
         variable busy_count : integer := 0;
     begin
 

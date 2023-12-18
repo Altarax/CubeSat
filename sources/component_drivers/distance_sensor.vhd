@@ -28,7 +28,7 @@ architecture rtl of distance_sensor is
     
 begin
 
-    hc_sr04_gen:process(clk_in, reset)
+    hc_sr04_gen:process(clk_in, reset, counter_trigger, max_trigger, ask_for_distance, echo, counter_burst, max_burst)
     begin
         if reset = '1' then
             counter_trigger <= 0;
@@ -37,6 +37,7 @@ begin
             distance <= 0;
             get_data_done <= '0';
             current_state <= init_t;
+            
         elsif rising_edge(clk_in) then
 
             case current_state is

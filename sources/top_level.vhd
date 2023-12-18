@@ -4,22 +4,29 @@ library ieee;
 
 entity top_level is
     port (
-        clk_in : in std_logic;
-        reset  : in std_logic;
 
-         -- I2C interface
-        i2c_scl             : inout std_logic;
-        i2c_sda             : inout std_logic;
+      clk_in : in std_logic;
+      reset  : in std_logic;
 
-        -- SPI interface
-        miso                : inout std_logic;
-        sclk                : buffer std_logic;
-        ss_n                : buffer std_logic_vector(0 downto 0);
-        mosi                : inout std_logic;
+      -- I2C interface
+      i2c_scl             : inout std_logic;
+      i2c_sda             : inout std_logic;
 
-        -- Distance sensor
-        echo                : inout std_logic;
-        trigger             : inout std_logic
+      -- SPI interface
+      miso                : inout std_logic;
+      sclk                : buffer std_logic;
+      ss_n                : buffer std_logic_vector(0 downto 0);
+      mosi                : inout std_logic;
+
+      -- UV SPI Interface
+      uv_spi_sck             : out std_logic;
+      uv_spi_cs              : out std_logic;
+      uv_spi_data            : in std_logic;
+
+      -- Distance sensor interface
+      echo                : inout std_logic;
+      trigger             : inout std_logic
+
     );
 end entity;
 
@@ -52,6 +59,10 @@ architecture rtl of top_level is
     -- Distance sensor
     signal ask_for_distance_s : std_logic := '0';
     signal distance_s         : integer := 0;
+
+    -- UV Sensor
+    signal ask_for_uv_s       : std_logic := '0';
+    signal uv_data_s          : std_logic_vector(8 downto 0) := (others => '0');
     
 begin
 
@@ -125,5 +136,16 @@ begin
       echo             => echo,
       trigger          => trigger
     );
+
+  uv_sensor: entity work.uv_sensor
+      port map (
+        clk_50Mhz => clk_in,
+        reset => reset,
+        ask_for_uv => ask_for_uv_s,
+        uv_data => uv_data_s,
+        spi_sck => uv_spi_sck,
+        spi_cs => uv_spi_cs,
+        spi_data => uv_spi_data
+      );
   
 end architecture;
