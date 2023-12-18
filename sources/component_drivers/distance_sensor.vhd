@@ -71,6 +71,7 @@ begin
         end if;
     end process;
 
-    --distance <= lut(counter_echo) when get_data_done = '1' else distance; -- TODO : Lookup table
+    -- TODO : Lookup table
+    --distance <= lut(counter_echo) when get_data_done = '1' else distance;
     
 end architecture;

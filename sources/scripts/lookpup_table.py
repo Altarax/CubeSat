@@ -1,7 +1,7 @@
 # Generate a lookup table
 
 lookup_table = """
-    type altitude_type is array (natural range 0 to 2**20 - 1) of real;
+    type altitude_type is array (natural range 0 to 499) of integer;
     constant altitude_lookup_table: altitude_type := (
 
 """
