@@ -8,7 +8,7 @@ lookup_table = """
 
 max_value_pressure = 500
 for pressure in range(0, max_value_pressure):
-    altitude = 44330 * (1 - pow(pressure/100 / 1013.25 , 0.1903));
+    altitude = round(44330 * (1 - pow(pressure/100 / 1013.25 , 0.1903)));
     if pressure == max_value_pressure-1:
         lookup_table+= f"   {pressure} : {altitude}"
     else:
