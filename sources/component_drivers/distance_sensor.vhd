@@ -3,9 +3,6 @@ library ieee;
   use ieee.numeric_std.all;
 
 entity distance_sensor is
-    generic (
-        FREQ : integer := 50_000_000    -- Hz
-    );
     port (
         clk_in              : in std_logic;
         reset               : in std_logic;
@@ -20,12 +17,13 @@ end entity;
 
 architecture rtl of distance_sensor is
 
-    signal counter_trigger, counter_echo: integer := 0;
-    signal max_trigger : integer := 500;
+    signal counter_trigger, counter_echo, counter_burst: integer := 0;
+    constant max_trigger    : integer := 500;
+    constant max_burst      : intger := 157; -- 3125ns/20ns (40Khz*8burst/Period)
 
     signal get_data_done : std_logic := '0';
     
-    type state_type is (init_t, trigger_t, echo_t);
+    type state_type is (init_t, trigger_t, wait_burst_t, echo_t);
     signal current_state : state_type := init_t;
     
 begin
@@ -53,13 +51,21 @@ begin
                 when trigger_t =>
                     if counter_trigger < max_trigger then
                         counter_trigger <= counter_trigger + 1;
-                        counter_trigger <= 0;
                         trigger <= '1';
                     else
                         trigger <= '0';
-                        current_state <= echo_t;
+                        counter_trigger <= 0;
+                        current_state <= wait_burst_t;
                     end if;
                     
+                when wait_burst_t =>
+                    if counter_burst < max_burst then
+                        counter_burst <= counter_burst + 1;
+                    else
+                        counter_burst <= 0;
+                        current_state <= echo_t;
+                    end if;
+
                 when echo_t =>
                     if echo = '1' then
                         counter_echo <= counter_echo + 1;
@@ -71,7 +77,7 @@ begin
         end if;
     end process;
 
-    -- TODO : Lookup table
-    --distance <= lut(counter_echo) when get_data_done = '1' else distance;
+    -- NS/1000/58
+    distance <= counter_echo when get_data_done = '1' else distance;
     
 end architecture;
