@@ -19,7 +19,7 @@ architecture rtl of distance_sensor is
 
     signal counter_trigger, counter_echo, counter_burst: integer := 0;
     constant max_trigger    : integer := 500;
-    constant max_burst      : intger := 157; -- 3125ns/20ns (40Khz*8burst/Period)
+    constant max_burst      : integer := 157; -- 3125ns/20ns (40Khz*8burst/Period)
 
     signal get_data_done : std_logic := '0';
     
@@ -77,7 +77,7 @@ begin
         end if;
     end process;
 
-    -- NS/1000/58
+    -- ns/1000/58 after
     distance <= counter_echo when get_data_done = '1' else distance;
     
 end architecture;
