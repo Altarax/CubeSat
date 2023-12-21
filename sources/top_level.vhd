@@ -13,15 +13,15 @@ entity top_level is
       i2c_sda             : inout std_logic;
 
       -- SPI interface
-      miso                : inout std_logic;
+      miso                : in std_logic;
       sclk                : buffer std_logic;
       ss_n                : buffer std_logic_vector(0 downto 0);
-      mosi                : inout std_logic;
+      mosi                : out std_logic;
 
       -- UV SPI Interface
-      uv_spi_sck             : out std_logic;
-      uv_spi_cs              : out std_logic;
-      uv_spi_data            : in std_logic;
+      uv_spi_sck          : out std_logic;
+      uv_spi_cs           : out std_logic;
+      uv_spi_data         : in std_logic;
 
       -- Distance sensor interface
       echo                : inout std_logic;
@@ -137,7 +137,7 @@ begin
       trigger          => trigger
     );
 
-  uv_sensor: entity work.uv_sensor
+  uv_sensor_inst: entity work.uv_sensor
       port map (
         clk_50Mhz => clk_in,
         reset => reset,

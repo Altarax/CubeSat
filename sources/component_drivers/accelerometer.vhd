@@ -49,7 +49,7 @@ begin
         variable busy_count : integer := 0;
     begin
 
-        if reset = '0' then
+        if reset = '1' then
             busy_count := 0; 
             i2c_ena <= '0';
             current_state <= init;
