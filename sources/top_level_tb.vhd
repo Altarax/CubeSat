@@ -75,7 +75,9 @@
         -- Put initialisation code here
         reset <= '1'; wait for 500ns;
         reset <= '0';
-
+        
+        -- Test UV Sensor
+        uv_spi_data <= '0';
 
         -- Put test bench stimulus code here
 

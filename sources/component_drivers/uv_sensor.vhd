@@ -64,7 +64,7 @@ begin
                         current_state <= stop_t;
                     else
                         read_count := read_count + 1;
-                        uv_data_s <= uv_data_s(6 downto 0) & spi_data;
+                        uv_data_s <= uv_data_s(7 downto 0) & spi_data;
                     end if;
 
                 when stop_t =>
