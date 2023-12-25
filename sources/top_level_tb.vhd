@@ -79,8 +79,6 @@
         -- Test UV Sensor
         uv_spi_data <= '0';
 
-        -- Put test bench stimulus code here
-
         wait;
     end process;
 
