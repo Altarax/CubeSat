@@ -12,32 +12,65 @@
 ----------------------------------------------------------------------------------
 
 --! Use simulation librairies
-Library IEEE;
-use IEEE.std_logic_TEXTIO.all;
-use IEEE.std_logic_1164.all;
-use IEEE.numeric_std.all;
+library ieee;
+    use ieee.std_logic_1164.all;
 
---! \brief Entity of temp_hum_sensor_ex_tb
-entity temp_hum_sensor_ex_tb is
-    --  Port ( );
-end temp_hum_sensor_ex_tb;
+library work;
+    use work.custom_types.all;
 
-architecture simulation of temp_hum_sensor_ex_tb is
-    
+entity tb_temp_hum_sensor_ex is
+end tb_temp_hum_sensor_ex;
 
+architecture tb of tb_temp_hum_sensor_ex is
+
+    component temp_hum_sensor_ex
+        port (clk_50Mhz        : in std_logic;
+              reset            : in std_logic;
+              ask_for_ext_temp : in std_logic;
+              ow_in_out        : inout std_logic;
+              ext_temp_value   : inout t_TEMP);
+    end component;
+
+    signal clk_50Mhz_s        : std_logic;
+    signal reset_s            : std_logic;
+    signal ask_for_ext_temp_s : std_logic;
+    signal ow_in_out_s        : std_logic;
+    signal ext_temp_value_s   : t_TEMP;
 
 begin
-    
-    UUT: entity work.temp_hum_sensor_ex
-	       port map (
-       );
-	
+
+    dut : temp_hum_sensor_ex
+    port map (clk_50Mhz        => clk_50Mhz_s,
+              reset            => reset_s,
+              ask_for_ext_temp => ask_for_ext_temp_s,
+              ow_in_out        => ow_in_out_s,
+              ext_temp_value   => ext_temp_value_s);
+
     reset_gen: process
-        begin
-        end process;
+    begin
+        reset_s <= '1'; wait for 50 ns;
+        reset_s <= '0'; wait; 
+    end process;
 
     clk_gen: process
-        begin
-        end process;
+    begin
+        clk_50Mhz_s <= '1'; wait for 20 ns;
+        clk_50Mhz_s <= '0'; wait for 20 ns;
+    end process;
 
-end simulation;
+    stimuli: process
+    begin
+        -- Init
+        ask_for_ext_temp_s <= '0';
+
+        -- Start
+        ask_for_ext_temp_s <= '1'; wait for 90 ns;
+        ask_for_ext_temp_s <= '0';
+
+        -- End
+
+        wait;
+
+    end process;
+
+end tb;
