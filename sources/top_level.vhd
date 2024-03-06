@@ -62,7 +62,7 @@ architecture rtl of top_level is
 
     -- UV Sensor
     signal ask_for_uv_s       : std_logic := '0';
-    signal uv_data_s          : std_logic_vector(8 downto 0) := (others => '0');
+    signal uv_data_s          : std_logic_vector(7 downto 0) := (others => '0');
     
 begin
 

@@ -8,7 +8,7 @@ entity uv_sensor is
         reset         : in std_logic;
         
         ask_for_uv    : in std_logic;
-        uv_data       : inout std_logic_vector(8 downto 0);
+        uv_data       : inout std_logic_vector(7 downto 0);
         
         -- SPI interface
         spi_sck       : out std_logic;
@@ -22,7 +22,7 @@ architecture rtl of uv_sensor is
     type state_t is (init, waiting_t, read_t, stop_t);
     signal current_state    : state_t := init;
 
-    signal uv_data_s        : std_logic_vector(8 downto 0) := (others => '0');
+    signal uv_data_s        : std_logic_vector(7 downto 0) := (others => '0');
     signal get_data_done    : std_logic := '0';
 
 begin
@@ -64,7 +64,7 @@ begin
                         current_state <= stop_t;
                     else
                         read_count := read_count + 1;
-                        uv_data_s <= uv_data_s(7 downto 0) & spi_data;
+                        uv_data_s <= uv_data_s(6 downto 0) & spi_data;
                     end if;
 
                 when stop_t =>
