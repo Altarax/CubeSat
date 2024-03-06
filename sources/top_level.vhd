@@ -1,6 +1,9 @@
 library ieee;
   use ieee.std_logic_1164.all;
   use ieee.numeric_std.all;
+  
+library work;
+  use work.custom_types.all;
 
 entity top_level is
     port (
@@ -22,10 +25,13 @@ entity top_level is
       uv_spi_sck          : out std_logic;
       uv_spi_cs           : out std_logic;
       uv_spi_data         : in std_logic;
+      
+      -- 1-wire EXT Temp interface
+      ext_ow_in_out       : inout std_logic;
 
       -- Distance sensor interface
-      echo                : inout std_logic;
-      trigger             : inout std_logic
+      echo                : in std_logic;
+      trigger             : out std_logic
 
     );
 end entity;
@@ -35,7 +41,6 @@ architecture rtl of top_level is
     -- I2C interface
     signal i2c_ena      : std_logic := '0';
     signal i2c_busy     : std_logic := '0';
-    signal busy_prev    : std_logic := '0';
     signal i2c_rw       : std_logic := '0';
     signal i2c_data_wr  : std_logic_vector(7 downto 0) := (others => '0');
     signal i2c_data_rd  : std_logic_vector(7 downto 0) := (others => '0');
@@ -49,20 +54,24 @@ architecture rtl of top_level is
     signal spi_tx_data  : std_logic_vector(7 downto 0) := (others => '0');
 
     -- Accelerometer
-    signal ask_for_position_s : std_logic := '0';
-    signal accel_data_s       : std_logic_vector(15 downto 0) := (others => '0');
+    signal ask_for_position_s   : std_logic := '0';
+    signal accel_data_s         : std_logic_vector(15 downto 0) := (others => '0');
 
     -- Altimeter sensor
-    signal ask_for_pressure_s : std_logic := '0';
-    signal altitude_s         : integer := 0;
+    signal ask_for_pressure_s   : std_logic := '0';
+    signal altitude_s           : integer := 0;
 
     -- Distance sensor
-    signal ask_for_distance_s : std_logic := '0';
-    signal distance_s         : integer := 0;
+    signal ask_for_distance_s   : std_logic := '0';
+    signal distance_s           : integer := 0;
 
     -- UV Sensor
-    signal ask_for_uv_s       : std_logic := '0';
-    signal uv_data_s          : std_logic_vector(7 downto 0) := (others => '0');
+    signal ask_for_uv_s         : std_logic := '0';
+    signal uv_data_s            : std_logic_vector(7 downto 0) := (others => '0');
+    
+    -- Temp EXT Sensor
+    signal ask_for_ext_temp_s   : std_logic := '0';
+    signal ext_temp_value_s     : t_TEMP := c_TEMP_INIT;
     
 begin
 
@@ -147,5 +156,14 @@ begin
         spi_cs => uv_spi_cs,
         spi_data => uv_spi_data
       );
+
+  ext_temp_sensor_inst: entity work.temp_hum_sensor_ex
+  port map (
+    clk_50Mhz       => clk_in,
+    reset           => reset,
+    ask_for_ext_temp=> ask_for_ext_temp_s,
+    ow_in_out       => ext_ow_in_out,
+    ext_temp_value  => ext_temp_value_s
+  );
   
 end architecture;
