@@ -52,11 +52,46 @@ begin
        );
 	
     reset_gen: process
-        begin
-        end process;
+    begin
+        reset_s <= '1'; wait for 50 ns;
+        reset_s <= '0'; wait; 
+    end process;
 
     clk_gen: process
-        begin
-        end process;
+    begin
+        clk_50Mhz_s <= '1'; wait for 20 ns;
+        clk_50Mhz_s <= '0'; wait for 20 ns;
+    end process;
+
+    stimuli: process
+    begin
+        -- Init
+        ask_for_position_s <= '0';
+        i2c_data_rd_s <= "01010101";
+
+        -- Start
+        ask_for_position_s <= '1'; wait for 90 ns;
+        ask_for_position_s <= '0';
+
+        for i in 0 to 4 loop
+            i2c_busy_s <= '1'; wait for 40 ns;
+            i2c_busy_s <= '0'; wait for 40 ns;
+        end loop;
+
+        wait for 80 ns;
+
+        for i in 0 to 4 loop
+            i2c_busy_s <= '1'; wait for 40 ns;
+            i2c_busy_s <= '0'; wait for 40 ns;
+        end loop;
+
+        -- End
+        assert (accel_data_s = "0101010101010101") 
+            report "Incorrect value, uv_data shoudld be 5555, value is " & integer'image(unsigned(accel_data_s))
+            severity ERROR;
+
+        wait;
+
+    end process;
 
 end simulation;
