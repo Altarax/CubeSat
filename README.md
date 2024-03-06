@@ -31,16 +31,15 @@ If you want to test everything on your own, I'm giving you the Quartus project.
 ## Todo
 Will be ✔️ when it's tested.  
 To copy : ✔️ ❌  
-[❌] - Altimeter  
+[✔️] - Altimeter  
 [❌] - Ultrasonic sensor  
 [❌] - Receiver  
 [❌] - Transmitter  
 [✔️] - UV sensor  
 [❌] - Extern T°/Hum sensor  
-[❌] - Intern T°/Hum sensor  
-[❌] - One Wire  
-[❌] - SPI  
-[❌] - I2C  
+[❌] - Intern T°/Hum sensor    
+[✔️] - SPI  
+[✔️] - I2C  
 [❌] - TOP LEVEL  
 [❌] - Assembly  
 [❌] - Testing  
