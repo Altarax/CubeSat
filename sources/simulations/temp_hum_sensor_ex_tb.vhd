@@ -36,6 +36,8 @@ architecture tb of tb_temp_hum_sensor_ex is
     signal ask_for_ext_temp_s : std_logic;
     signal ow_in_out_s        : std_logic;
     signal ext_temp_value_s   : t_TEMP;
+    
+    constant c_TEMP_FINAL : t_TEMP := (rh_data => (others => '1'), t_data => (others => '1'), checksum => (others => '1'));
 
 begin
 
@@ -66,8 +68,10 @@ begin
         -- Start
         ask_for_ext_temp_s <= '1'; wait for 90 ns;
         ask_for_ext_temp_s <= '0';
+        ow_in_out_s <= '1';
 
         -- End
+        assert (ext_temp_value_s = c_TEMP_FINAL) report "Value should be FFFF" severity ERROR;
 
         wait;
 

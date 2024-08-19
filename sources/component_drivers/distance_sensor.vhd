@@ -30,49 +30,54 @@ begin
 
     hc_sr04_gen:process(clk_in, reset, counter_trigger, ask_for_distance, echo, counter_burst)
     begin
-        if reset = '1' then
-            counter_trigger <= 0;
-            counter_echo <= 0;
-            trigger <= '0';
-            get_data_done <= '0';
-            current_state <= init_t;
             
-        elsif rising_edge(clk_in) then
+        if rising_edge(clk_in) then
 
-            case current_state is
-                when init_t =>
-                    get_data_done <= '0';
-                    counter_echo <= 0;
-                    if ask_for_distance = '1' then
-                        current_state <= trigger_t;
-                    end if;
+            if reset = '1' then
+                counter_trigger <= 0;
+                counter_echo <= 0;
+                trigger <= '0';
+                get_data_done <= '0';
+                current_state <= init_t;
 
-                when trigger_t =>
-                    if counter_trigger < max_trigger then
-                        counter_trigger <= counter_trigger + 1;
-                        trigger <= '1';
-                    else
-                        trigger <= '0';
-                        counter_trigger <= 0;
-                        current_state <= wait_burst_t;
-                    end if;
-                    
-                when wait_burst_t =>
-                    if counter_burst < max_burst then
-                        counter_burst <= counter_burst + 1;
-                    else
-                        counter_burst <= 0;
-                        current_state <= echo_t;
-                    end if;
+            else
 
-                when echo_t =>
-                    if echo = '1' then
-                        counter_echo <= counter_echo + 1;
-                    else
-                        get_data_done <= '1';
-                        current_state <= init_t;
-                    end if;
-            end case;
+                case current_state is
+                    when init_t =>
+                        get_data_done <= '0';
+                        counter_echo <= 0;
+                        if ask_for_distance = '1' then
+                            current_state <= trigger_t;
+                        end if;
+
+                    when trigger_t =>
+                        if counter_trigger < max_trigger then
+                            counter_trigger <= counter_trigger + 1;
+                            trigger <= '1';
+                        else
+                            trigger <= '0';
+                            counter_trigger <= 0;
+                            current_state <= wait_burst_t;
+                        end if;
+                        
+                    when wait_burst_t =>
+                        if counter_burst < max_burst then
+                            counter_burst <= counter_burst + 1;
+                        else
+                            counter_burst <= 0;
+                            current_state <= echo_t;
+                        end if;
+
+                    when echo_t =>
+                        if echo = '1' then
+                            counter_echo <= counter_echo + 1;
+                        else
+                            get_data_done <= '1';
+                            current_state <= init_t;
+                        end if;
+                        
+                end case;
+            end if;
         end if;
     end process;
 
