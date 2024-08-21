@@ -26,9 +26,6 @@ entity top_level is
       uv_spi_cs           : out std_logic;
       uv_spi_data         : in std_logic;
       
-      -- 1-wire EXT Temp interface
-      ext_ow_in_out       : inout std_logic;
-
       -- Distance sensor interface
       echo                : in std_logic;
       trigger             : out std_logic
@@ -54,20 +51,20 @@ architecture rtl of top_level is
     signal spi_tx_data  : std_logic_vector(7 downto 0) := (others => '0');
 
     -- Accelerometer
-    signal ask_for_position_s   : std_logic := '0';
-    signal accel_data_s         : std_logic_vector(15 downto 0) := (others => '0');
+    signal ask_for_position   : std_logic := '0';
+    signal accel_data         : std_logic_vector(15 downto 0) := (others => '0');
 
     -- Altimeter sensor
-    signal ask_for_pressure_s   : std_logic := '0';
-    signal altitude_s           : std_logic_vector(19 downto 0) := (others => '0');
+    signal ask_for_pressure   : std_logic := '0';
+    signal altitude           : std_logic_vector(19 downto 0) := (others => '0');
 
     -- Distance sensor
-    signal ask_for_distance_s   : std_logic := '0';
-    signal distance_s           : std_logic_vector(15 downto 0) := (others => '0');
+    signal ask_for_distance   : std_logic := '0';
+    signal distance           : std_logic_vector(15 downto 0) := (others => '0');
 
     -- UV Sensor
-    signal ask_for_uv_s         : std_logic := '0';
-    signal uv_data_s            : std_logic_vector(7 downto 0) := (others => '0');
+    signal ask_for_uv         : std_logic := '0';
+    signal uv_data            : std_logic_vector(7 downto 0) := (others => '0');
     
 begin
   
