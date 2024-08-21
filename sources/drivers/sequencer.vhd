@@ -33,7 +33,7 @@ entity sequencer is
         -- Altimeter Interface
         alti_spi_cont       : in std_logic;    
         alti_spi_rx_data    : out std_logic_vector(7 downto 0);
-        alti_spi_ena        : buffer std_logic;
+        alti_spi_ena        : in std_logic;
         alti_spi_busy       : out std_logic;
         alti_spi_tx_data    : in std_logic_vector(7 downto 0);
         ask_for_position    : out std_logic

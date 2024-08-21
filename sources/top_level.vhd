@@ -35,21 +35,6 @@ end entity;
 
 architecture rtl of top_level is
 
-    -- I2C interface
-    signal i2c_ena      : std_logic := '0';
-    signal i2c_busy     : std_logic := '0';
-    signal i2c_rw       : std_logic := '0';
-    signal i2c_data_wr  : std_logic_vector(7 downto 0) := (others => '0');
-    signal i2c_data_rd  : std_logic_vector(7 downto 0) := (others => '0');
-    signal i2c_addr     : std_logic_vector(6 downto 0) := (others => '0');
-
-    -- SPI interface
-    signal spi_cont     : std_logic := '0';
-    signal spi_rx_data  : std_logic_vector(7 downto 0) := (others => '0');
-    signal spi_ena      : std_logic := '0';
-    signal spi_busy     : std_logic := '0';
-    signal spi_tx_data  : std_logic_vector(7 downto 0) := (others => '0');
-
     -- Accelerometer
     signal ask_for_position   : std_logic := '0';
     signal accel_data         : std_logic_vector(15 downto 0) := (others => '0');
