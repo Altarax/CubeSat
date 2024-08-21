@@ -8,7 +8,8 @@ entity uv_sensor is
         reset         : in std_logic;
         
         ask_for_uv    : in std_logic;
-        uv_data       : inout std_logic_vector(7 downto 0);
+        uv_data       : out std_logic_vector(7 downto 0);
+        get_data_done : out std_logic;
         
         -- SPI interface
         spi_sck       : out std_logic;
@@ -23,7 +24,7 @@ architecture rtl of uv_sensor is
     signal current_state    : state_t := init;
 
     signal uv_data_s        : std_logic_vector(7 downto 0) := (others => '0');
-    signal get_data_done    : std_logic := '0';
+    signal get_data_done_s    : std_logic := '0';
 
 begin
 
@@ -37,7 +38,7 @@ begin
             if (reset = '1') then
 
                 spi_cs <= '1';
-                get_data_done <= '0';
+                get_data_done_s <= '0';
                 uv_data_s <= (others => '0');
                 current_state <= init;
 
@@ -46,7 +47,7 @@ begin
                 case current_state is 
 
                     when init =>
-                        get_data_done <= '0';
+                        get_data_done_s <= '0';
                         if ask_for_uv = '1' then
                             current_state <= waiting_t;
                         end if;
@@ -72,7 +73,7 @@ begin
 
                     when stop_t =>
                         spi_cs <= '1';
-                        get_data_done <= '1';
+                        get_data_done_s <= '1';
                         current_state <= init;
 
                 end case;
@@ -81,6 +82,7 @@ begin
     end process;
 
     spi_sck <= clk_50Mhz when (current_state = read_t or current_state = waiting_t) else '0';
-    uv_data <= uv_data_s when get_data_done = '1' else uv_data;
+    get_data_done <= get_data_done_s;
+    uv_data <= uv_data_s;
 
 end architecture;

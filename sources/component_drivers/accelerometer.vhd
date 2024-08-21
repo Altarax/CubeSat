@@ -8,7 +8,8 @@ entity accelerometer is
         reset               : in std_logic;
         
         ask_for_position    : in std_logic;
-        accel_data          : inout std_logic_vector(15 downto 0);
+        accel_data          : out std_logic_vector(15 downto 0);
+        get_data_done       : out std_logic;
         
         -- I2C interface
         i2c_ena      : out std_logic;
@@ -41,17 +42,18 @@ architecture rtl of accelerometer is
     signal busy_prev    : std_logic := '0';
 
     signal accel_data_s : std_logic_vector(15 downto 0) := (others => '0');
-    signal get_data_done : std_logic := '0';
+    signal get_data_done_s : std_logic := '0';
 
 begin
     
-    mpu_6050_gen: process(clk_50Mhz, reset, get_data_done, ask_for_position, busy_prev, i2c_busy)
+    mpu_6050_gen: process(clk_50Mhz, reset, get_data_done_s, ask_for_position, busy_prev, i2c_busy)
         variable busy_count : integer := 0;
     begin
     
         if rising_edge(clk_50Mhz) then
 
             if reset = '1' then
+                get_data_done_s <= '0';
                 busy_count := 0; 
                 i2c_ena <= '0';
                 current_state <= init;
@@ -61,7 +63,7 @@ begin
                 case current_state is 
 
                     when init =>
-                        get_data_done <= '0';
+                        get_data_done_s <= '0';
                         if ask_for_position = '1' then
                             current_state <= send_config_t;
                         else 
@@ -126,7 +128,7 @@ begin
                                 if (i2c_busy = '0') then
                                     accel_data_s(7 downto 0) <= i2c_data_rd;  
                                     busy_count := 0;
-                                    get_data_done <= '1';
+                                    get_data_done_s <= '1';
                                     current_state <= init; 
                                 end if;
 
@@ -141,6 +143,7 @@ begin
 
     end process;
 
-    accel_data <= accel_data_s when get_data_done = '1' else accel_data;
+    get_data_done <= get_data_done_s;
+    accel_data <= accel_data_s;
 
 end architecture;
