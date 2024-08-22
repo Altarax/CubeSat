@@ -76,17 +76,17 @@ begin
     -- I2C Commands
     i2c_master_inst: entity work.i2c_master
         port map (
-        clk       => clk_50Mhz,
-        reset_n   => reset,
-        ena       => r_i2c_ena,
-        addr      => r_i2c_addr,
-        rw        => r_i2c_rw,
-        data_wr   => r_i2c_data_wr,
-        busy      => r_i2c_busy,
-        data_rd   => r_i2c_data_rd,
-        ack_error => open,
-        sda       => i2c_sda,
-        scl       => i2c_scl
+            clk       => clk_50Mhz,
+            reset_n   => reset,
+            ena       => r_i2c_ena,
+            addr      => r_i2c_addr,
+            rw        => r_i2c_rw,
+            data_wr   => r_i2c_data_wr,
+            busy      => r_i2c_busy,
+            data_rd   => r_i2c_data_rd,
+            ack_error => open,
+            sda       => i2c_sda,
+            scl       => i2c_scl
         );
 
     i2c_fsm_outputs: process(clk_50Mhz, i2c_current_state)
@@ -103,6 +103,9 @@ begin
                     r_i2c_data_wr       <= accel_i2c_data_wr;
                     accel_i2c_data_rd   <= r_i2c_data_rd;
                     r_i2c_addr          <= accel_i2c_addr;
+
+                 when others =>
+                    null;
 
             end case;
         end if;
@@ -161,6 +164,9 @@ begin
                     alti_spi_rx_data    <= r_spi_rx_data;
                     r_spi_tx_data       <= alti_spi_tx_data;
                     alti_spi_busy       <= r_spi_busy; 
+
+                when others =>
+                    null;
 
             end case;
         end if;
